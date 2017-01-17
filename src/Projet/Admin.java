@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Admin extends Compte {
-	
+public class Admin{
+	int id;
 
 
 	public Admin() {
@@ -49,8 +49,7 @@ public class Admin extends Compte {
 		}
 		
 		return res;
-	
-		
+			
 	}
 
 	public void modifCompte(){
