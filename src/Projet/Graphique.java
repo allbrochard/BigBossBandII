@@ -18,6 +18,7 @@ public class Graphique extends JFrame{
 
 	String mp, log;
 
+	
 	JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
 	JPanel pan1= new JPanel();
@@ -30,7 +31,7 @@ public class Graphique extends JFrame{
 	static String typeCompte;
 	String mdpCompte;
 	String loginCompte;
-	
+	boolean test = false;
 	public Graphique (){
 
 		login = new JLabel("LOGIN");
@@ -56,28 +57,49 @@ public class Graphique extends JFrame{
 		pan1.add(password);
 		pan1.add(txuser2);
 		pan1.add(connecte);
-		connecte.addActionListener(new ActionListener() {
-			//connection avec boite de dialogue pour indiquer ce qui ce passe;
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				boolean connect = false;
-				log = txuser.getText();
-				
-				mp = txuser2.getText();
-				
-				if(log.equals(testLogin())){
-					if(mp.equals(recupeMP())){
-						JOptionPane.showMessageDialog(pan1, "Connexion O.K.");
+		do{
+			connecte.addActionListener(new ActionListener() {
+				//connection avec boite de dialogue pour indiquer ce qui ce passe;
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					boolean connect = false;
+					log = txuser.getText();
+
+					mp = txuser2.getText();
+
+					if(log.equals(testLogin())){
+						if(mp.equals(recupeMP())){
+							JOptionPane.showMessageDialog(pan1, "Connexion O.K.");
+							test=true;
+						}
+						else{
+							JOptionPane.showMessageDialog(pan1, "Mot de passe invalide");
+						}
 					}
 					else{
-						JOptionPane.showMessageDialog(pan1, "Mot de passe invalide");
+						JOptionPane.showMessageDialog(pan1, "Login non reconnu");
 					}
 				}
-				else{
-					JOptionPane.showMessageDialog(pan1, "Login non reconnu");
-				}
-			}
-		});
+			});
+		}while(test);
+		
+		switch(typeCompte){
+		case "admin":
+			FenetreAdmin adminFrame = new FenetreAdmin();
+			break;
+		case "responsable":
+			FenetreResponsable responsableFrame = new FenetreResponsable();
+			break;
+		case "formateur":
+			FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
+			break;
+		case "etudiant":
+			FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
+			break;
+		default : System.out.println("perdu");
+
+
+		}
 
 		this.setContentPane(pan2);
 		pan2.setVisible(true);
