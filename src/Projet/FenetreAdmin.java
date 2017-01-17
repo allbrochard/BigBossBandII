@@ -1,5 +1,8 @@
 package Projet;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,6 +16,7 @@ import javax.swing.JPanel;
 public class FenetreAdmin extends JFrame implements MouseListener{
 // 
 	Admin adm = new Admin();
+	Reserver res = new Reserver();
 	
 	public FenetreAdmin(){
 		
@@ -33,10 +37,64 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		bar.add(Compte);
 		JMenuItem CreerCompte = new JMenuItem("Creer Compte");
 		Compte.add(CreerCompte);	
+		CreerCompte.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				adm.creeCompte();
+				
+			}
+		});
 		JMenuItem ModifCompte = new JMenuItem("Modifier Compte");
 		Compte.add(ModifCompte);
+		ModifCompte.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				adm.modifCompte();
+				
+			}
+		});
 		JMenuItem SuppCompte = new JMenuItem("Supprimer Compte");
 		Compte.add(SuppCompte);
+		SuppCompte.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				adm.supprCompte();
+				
+			}
+		});
+		
+		JMenu Reservation = new JMenu("Reservation");
+		bar.add(Reservation, BorderLayout.CENTER);
+		JMenuItem CreerResa = new JMenuItem("Creer une Reservation");
+		Reservation.add(CreerResa);
+		CreerResa.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				res.reserverSalle();
+			}
+		});
+		JMenuItem ModifResa = new JMenuItem("Modifier une Reservation");
+		Reservation.add(ModifResa);
+		ModifResa.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				res.modifResa();
+			}
+		});
+		JMenuItem SuppResa = new JMenuItem("Supprimer une Reservation");
+		Reservation.add(SuppResa);
+		SuppResa.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				res.supprRes();
+				
+			}
+		});
+		
 		
 		JMenu Salle = new JMenu ("Salle");
 		bar.add(Salle);
