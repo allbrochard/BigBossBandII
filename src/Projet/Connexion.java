@@ -21,7 +21,7 @@ public class Connexion {
 	//Mot de passe de l'utilisateur
 
 
-	private String passwd;
+	private String passwd; //= "vsts2qzr";
 
 	//Objet Connection
 

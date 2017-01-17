@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		//Admin adm = new Admin();
-		//Graphique graph = new Graphique();
+		Graphique graph = new Graphique();
 
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
 		//FenetreAdmin JFrame = new FenetreAdmin();
@@ -13,7 +13,7 @@ public class Main {
 		//adm.modifCompte();
 		//adm.creeCompte();
 		
-		Reserver res = new Reserver();
-		res.reserverSalle();
+//		Reserver res = new Reserver();
+//		res.reserverSalle();
 	}
 }
