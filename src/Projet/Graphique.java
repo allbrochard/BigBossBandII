@@ -18,6 +18,7 @@ public class Graphique extends JFrame{
 
 	String mp, log;
 
+	
 	JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
 	JPanel pan1= new JPanel();
