@@ -11,7 +11,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
-Admin adm = new Admin();
+
+	Admin adm = new Admin();
+	
 	public FenetreAdmin(){
 		
 		setSize(800, 600);
@@ -30,7 +32,7 @@ Admin adm = new Admin();
 		JMenu Compte = new JMenu ("Compte");
 		bar.add(Compte);
 		JMenuItem CreerCompte = new JMenuItem("Creer Compte");
-		Compte.add(CreerCompte);
+		Compte.add(CreerCompte);	
 		JMenuItem ModifCompte = new JMenuItem("Modifier Compte");
 		Compte.add(ModifCompte);
 		JMenuItem SuppCompte = new JMenuItem("Supprimer Compte");
