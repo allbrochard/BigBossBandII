@@ -11,7 +11,8 @@ public class Admin{
 
 	public Admin() {
 	}
-
+	
+	//Méthode pour créer un compte (utilisable uniquement en mode admin)
 	public boolean creeCompte(){
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;
@@ -50,7 +51,8 @@ public class Admin{
 		return res;
 			
 	}
-
+	
+	//Méthode pour modifier un compte (utilisable uniquement en mode admin)
 	public void modifCompte(){
 		Scanner sc = new Scanner(System.in);
 		
@@ -83,7 +85,7 @@ public class Admin{
 		System.out.println("Le compte a bien été mis à jour !");
 	}
 		
-
+	//Méthode pour supprimer un compte (utilisable uniquement en mode admin)
 	public void supprCompte(){
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;

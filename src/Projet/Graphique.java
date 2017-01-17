@@ -69,7 +69,7 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-							JOptionPane.showMessageDialog(pan1, "Connexion O.K.", "Information" ,JOptionPane.OK_OPTION);
+							connexionLog();
 							affichageAppli();
 							test=true;		
 						}
@@ -134,7 +134,7 @@ public class Graphique extends JFrame{
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				typeCompte = result.getString(7);
+				typeCompte = result.getString(1);
 
 			}
 		}

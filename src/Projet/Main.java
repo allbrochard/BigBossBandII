@@ -15,6 +15,6 @@ public class Main {
 		//FenetreAdmin JFrame = new FenetreAdmin();
 		//FenetreResponsable respon = new FenetreResponsable();
 		//adm.modifCompte();
-		
+		//adm.creeCompte();
 	}
 }
