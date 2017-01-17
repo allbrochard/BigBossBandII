@@ -18,7 +18,7 @@ public class Graphique extends JFrame{
 
 	String mp, log;
 
-	
+
 	JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
 	JPanel pan1= new JPanel();
@@ -70,7 +70,9 @@ public class Graphique extends JFrame{
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
 							JOptionPane.showMessageDialog(pan1, "Connexion O.K.");
-							test=true;
+
+							test=true;		
+
 							switch(typeCompte){
 							case "admin":
 								FenetreAdmin adminFrame = new FenetreAdmin();
@@ -100,8 +102,6 @@ public class Graphique extends JFrame{
 			});
 		}while(test);
 		
-
-
 		this.setContentPane(pan2);
 		pan2.setVisible(true);
 
@@ -121,7 +121,7 @@ public class Graphique extends JFrame{
 
 		System.out.print("Rentrez le login  ");
 
-		String query = "SELECT typecompte FROM public.compte WHERE logcompte = ? RETURNING typecompte;";
+		String query = "SELECT typecompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
@@ -147,7 +147,7 @@ public class Graphique extends JFrame{
 	 */
 	public String recupeMP(){
 
-		String query = "SELECT pswdcompte FROM public.compte WHERE logcompte = ? RETURNING pswdcompte;";
+		String query = "SELECT pswdcompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
@@ -157,7 +157,7 @@ public class Graphique extends JFrame{
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				mdpCompte = result.getString(5);
+				mdpCompte = result.getString(1);
 
 			}
 		}
@@ -171,7 +171,7 @@ public class Graphique extends JFrame{
 	 * @return le login, si il n'existe pas return null;
 	 */
 	public String testLogin(){
-		String query = "SELECT logcompte FROM public.compte WHERE logcompte = ? RETURNING logcompte;";
+		String query = "SELECT logcompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
@@ -181,15 +181,14 @@ public class Graphique extends JFrame{
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				loginCompte = result.getString(3);
-				
+				loginCompte = result.getString(1);
+
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
-		return mdpCompte;
+		return loginCompte;
 	}
 
 	public void mouseClicked(MouseEvent arg0) {
