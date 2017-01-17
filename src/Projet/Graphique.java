@@ -69,34 +69,16 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-							JOptionPane.showMessageDialog(pan1, "Connexion O.K.");
-
+							JOptionPane.showMessageDialog(pan1, "Connexion O.K.", "Information" ,JOptionPane.OK_OPTION);
+							affichageAppli();
 							test=true;		
-
-							switch(typeCompte){
-							case "admin":
-								FenetreAdmin adminFrame = new FenetreAdmin();
-								break;
-							case "responsable":
-								FenetreResponsable responsableFrame = new FenetreResponsable();
-								break;
-							case "formateur":
-								FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
-								break;
-							case "etudiant":
-								FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
-								break;
-							default : System.out.println("perdu");
-
-
-							}
 						}
 						else{
-							JOptionPane.showMessageDialog(pan1, "Mot de passe invalide");
+							JOptionPane.showMessageDialog(pan1, "Mot de passe invalide", "Erreur", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 					else{
-						JOptionPane.showMessageDialog(pan1, "Login non reconnu");
+						JOptionPane.showMessageDialog(pan1, "Login non reconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			});
@@ -111,6 +93,27 @@ public class Graphique extends JFrame{
 		this.setVisible(true); 
 
 	}
+	
+	public void affichageAppli(){
+		switch(typeCompte){
+		case "admin":
+			FenetreAdmin adminFrame = new FenetreAdmin();
+			break;
+		case "responsable":
+			FenetreResponsable responsableFrame = new FenetreResponsable();
+			break;
+		case "formateur":
+			FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
+			break;
+		case "etudiant":
+			FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
+			break;
+		default : System.out.println("perdu");
+
+
+		}
+	}
+	
 	/**
 	 * 
 	 * @return le type de compte pour le réutiliser;
