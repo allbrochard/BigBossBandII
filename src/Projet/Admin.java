@@ -9,10 +9,10 @@ import java.util.Scanner;
 public class Admin{
 	int id;
 
-
 	public Admin() {
 	}
-
+	
+	//Méthode pour créer un compte (utilisable uniquement en mode admin)
 	public boolean creeCompte(){
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;
@@ -51,12 +51,41 @@ public class Admin{
 		return res;
 			
 	}
-
+	
+	//Méthode pour modifier un compte (utilisable uniquement en mode admin)
 	public void modifCompte(){
+		Scanner sc = new Scanner(System.in);
 		
+		String query = "UPDATE public.compte SET nomcompte = ?, prenomcompte = ?, logcompte = ?, pswdcompte = ?, typecompte = ?, agecompte = ? WHERE logcompte = ?;";
+		try {
+			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			
+			System.out.print("Rentrez le login du compte à modifier : ");
+			prepare.setString(7, sc.nextLine());
+			System.out.print("Rentrez le nouveau nom : ");
+			prepare.setString(1, sc.nextLine());
+			System.out.print("Rentrez le nouveau prénom : ");
+			prepare.setString(2, sc.nextLine());
+			System.out.print("Rentrez le nouveau login : ");
+			prepare.setString(3, sc.nextLine());
+			System.out.print("Rentrez le nouveau mot de passe : ");
+			prepare.setString(4, sc.nextLine());
+			System.out.print("Rentrez le nouveau type de compte : ");
+			prepare.setString(5, sc.nextLine());
+			System.out.print("Rentrez le nouvel age : ");
+			prepare.setInt(6, sc.nextInt());
+			
+			
+			prepare.execute();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Le compte a bien été mis à jour !");
 	}
 		
-
+	//Méthode pour supprimer un compte (utilisable uniquement en mode admin)
 	public void supprCompte(){
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;

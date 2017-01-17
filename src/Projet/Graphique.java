@@ -18,7 +18,7 @@ public class Graphique extends JFrame{
 
 	String mp, log;
 
-	
+
 	JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
 	JPanel pan1= new JPanel();
@@ -69,38 +69,23 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-							JOptionPane.showMessageDialog(pan1, "Connexion O.K.");
-							test=true;
-							switch(typeCompte){
-							case "admin":
-								FenetreAdmin adminFrame = new FenetreAdmin();
-								break;
-							case "responsable":
-								FenetreResponsable responsableFrame = new FenetreResponsable();
-								break;
-							case "formateur":
-								FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
-								break;
-							case "etudiant":
-								FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
-								break;
-							default : System.out.println("perdu");
 
+							connexionLog();
+							affichageAppli();
+							test=true;		
 
-							}
 						}
 						else{
-							JOptionPane.showMessageDialog(pan1, "Mot de passe invalide");
+							JOptionPane.showMessageDialog(pan1, "Mot de passe invalide", "Erreur", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 					else{
-						JOptionPane.showMessageDialog(pan1, "Login non reconnu");
+						JOptionPane.showMessageDialog(pan1, "Login non reconnu", "Erreur", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 			});
 		}while(test);
 		
-
 
 		this.setContentPane(pan2);
 		pan2.setVisible(true);
@@ -111,6 +96,31 @@ public class Graphique extends JFrame{
 		this.setVisible(true); 
 
 	}
+	
+	
+	/**
+	 * switch pour savoir qu'elle type de compte c'est conneceter
+	 */
+	public void affichageAppli(){
+		switch(typeCompte){
+		case "admin":
+			FenetreAdmin adminFrame = new FenetreAdmin();
+			break;
+		case "responsable":
+			FenetreResponsable responsableFrame = new FenetreResponsable();
+			break;
+		case "formateur":
+			FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
+			break;
+		case "etudiant":
+			FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
+			break;
+		default : System.out.println("perdu");
+
+
+		}
+
+	}
 	/**
 	 * 
 	 * @return le type de compte pour le réutiliser;
@@ -118,20 +128,17 @@ public class Graphique extends JFrame{
 	public String connexionLog(){
 		Scanner sc = new Scanner(System.in);
 
-
-		System.out.print("Rentrez le login  ");
-
-		String query = "SELECT typecompte FROM public.compte WHERE logcompte = ? RETURNING typecompte;";
+		String query = "SELECT typecompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
+			
 			prepare.setString(1, log);
 
 			prepare.execute();
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				typeCompte = result.getString(7);
+				typeCompte = result.getString(1);
 
 			}
 		}
@@ -147,7 +154,7 @@ public class Graphique extends JFrame{
 	 */
 	public String recupeMP(){
 
-		String query = "SELECT pswdcompte FROM public.compte WHERE logcompte = ? RETURNING pswdcompte;";
+		String query = "SELECT pswdcompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
@@ -157,7 +164,7 @@ public class Graphique extends JFrame{
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				mdpCompte = result.getString(5);
+				mdpCompte = result.getString(1);
 
 			}
 		}
@@ -171,7 +178,7 @@ public class Graphique extends JFrame{
 	 * @return le login, si il n'existe pas return null;
 	 */
 	public String testLogin(){
-		String query = "SELECT logcompte FROM public.compte WHERE logcompte = ? RETURNING logcompte;";
+		String query = "SELECT logcompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
@@ -181,46 +188,36 @@ public class Graphique extends JFrame{
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				loginCompte = result.getString(3);
-				
+				loginCompte = result.getString(1);
+
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		}
-		return mdpCompte;
+		return loginCompte;
 	}
 
 	public void mouseClicked(MouseEvent arg0) {
 
 
 	}
-
-
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 

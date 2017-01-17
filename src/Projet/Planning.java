@@ -23,7 +23,6 @@ public class Planning extends JFrame {
 		JPanel pan3 = new JPanel();
 		JPanel pan4 = new JPanel();
 		
-	
 		pan2.add(new JLabel("Lundi "));
 		pan2.add(new JLabel("Mardi "));
 		pan2.add(new JLabel("Mercredi "));
