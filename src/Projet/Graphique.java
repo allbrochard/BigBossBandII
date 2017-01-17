@@ -69,7 +69,7 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-							//permet d'acceder a l'application
+							connexionLog();
 							affichageAppli();
 							test=true;		
 						}
@@ -124,20 +124,17 @@ public class Graphique extends JFrame{
 	public String connexionLog(){
 		Scanner sc = new Scanner(System.in);
 
-
-		System.out.print("Rentrez le login  ");
-
 		String query = "SELECT typecompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
+			
 			prepare.setString(1, log);
 
 			prepare.execute();
 			ResultSet result = prepare.getResultSet();
 			if(result.first())
 			{
-				typeCompte = result.getString(7);
+				typeCompte = result.getString(1);
 
 			}
 		}
