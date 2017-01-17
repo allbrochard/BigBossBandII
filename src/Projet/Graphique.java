@@ -46,11 +46,7 @@ public class Graphique extends JFrame{
 		txuser = new JTextField(15);
 
 		txuser2 = new JTextField(15); 
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> branch 'master' of https://github.com/allbrochard/BigBossBandII.git
 		Connexion co = new Connexion();
 
 
