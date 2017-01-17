@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import projet.Connexion;
-
 public class Admin{
 	int id;
 
