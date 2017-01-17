@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
-
+Admin adm = new Admin();
 	public FenetreAdmin(){
 		
 		setSize(800, 600);

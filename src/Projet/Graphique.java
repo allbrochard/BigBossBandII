@@ -69,7 +69,6 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-							JOptionPane.showMessageDialog(pan1, "Connexion O.K.", "Information" ,JOptionPane.OK_OPTION);
 							affichageAppli();
 							test=true;		
 						}
@@ -94,6 +93,10 @@ public class Graphique extends JFrame{
 
 	}
 	
+	
+	/**
+	 * switch pour savoir qu'elle type de compte c'est conneceter
+	 */
 	public void affichageAppli(){
 		switch(typeCompte){
 		case "admin":
@@ -113,7 +116,6 @@ public class Graphique extends JFrame{
 
 		}
 	}
-	
 	/**
 	 * 
 	 * @return le type de compte pour le réutiliser;
@@ -198,31 +200,22 @@ public class Graphique extends JFrame{
 
 
 	}
-
-
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
