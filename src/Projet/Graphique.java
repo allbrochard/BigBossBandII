@@ -71,6 +71,23 @@ public class Graphique extends JFrame{
 						if(mp.equals(recupeMP())){
 							JOptionPane.showMessageDialog(pan1, "Connexion O.K.");
 							test=true;
+							switch(typeCompte){
+							case "admin":
+								FenetreAdmin adminFrame = new FenetreAdmin();
+								break;
+							case "responsable":
+								FenetreResponsable responsableFrame = new FenetreResponsable();
+								break;
+							case "formateur":
+								FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
+								break;
+							case "etudiant":
+								FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
+								break;
+							default : System.out.println("perdu");
+
+
+							}
 						}
 						else{
 							JOptionPane.showMessageDialog(pan1, "Mot de passe invalide");
@@ -83,23 +100,7 @@ public class Graphique extends JFrame{
 			});
 		}while(test);
 		
-		switch(typeCompte){
-		case "admin":
-			FenetreAdmin adminFrame = new FenetreAdmin();
-			break;
-		case "responsable":
-			FenetreResponsable responsableFrame = new FenetreResponsable();
-			break;
-		case "formateur":
-			FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
-			break;
-		case "etudiant":
-			FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
-			break;
-		default : System.out.println("perdu");
 
-
-		}
 
 		this.setContentPane(pan2);
 		pan2.setVisible(true);
