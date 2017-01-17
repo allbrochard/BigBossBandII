@@ -42,7 +42,7 @@ public class Graphique extends JFrame{
 
 		txuser2 = new JTextField(15); 
 
-
+		Connexion co = new Connexion();
 
 
 
