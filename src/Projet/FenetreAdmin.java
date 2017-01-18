@@ -141,11 +141,21 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 			}
 		});
 		etudiant.add(integerApromo);
+		JMenuItem listeEtudiant = new JMenuItem("Liste des etudiant");
+		listeEtudiant.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				prom.afficheListeEtud();
+				
+			}
+		});
+		etudiant.add(listeEtudiant);
 		
 		//*****************MENU PROMO***************************
 		
-		JMenu promo = new JMenu("Promo");
-		bar.add(promo);
+//		JMenu promo = new JMenu("Promo");
+//		bar.add(promo);
 //		do{
 //			
 //			JMenuItem afficherListe = new JMenuItem("salut"); 

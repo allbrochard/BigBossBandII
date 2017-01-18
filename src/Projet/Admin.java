@@ -33,18 +33,21 @@ public class Admin extends JFrame implements MouseListener{
 
 
 		JPanel adminPan = new JPanel();
+		
 		JLabel nom = new JLabel("Rentrez le nom"); 
 		JLabel prenom = new JLabel("Rentrez le prenom");
 		JLabel login = new JLabel("Rentrez le login");
 		JLabel mdp = new JLabel("Rentrez le mot de passe");
 		JLabel typecompte = new JLabel("Rentrez le type de compte");
 		JLabel age = new JLabel("Rentrez l'age");
+		
 		JTextField tNom = new JTextField(15);
 		JTextField tPrenom = new JTextField(15);
 		JTextField tLogin = new JTextField(15);
 		JTextField tMdp = new JTextField(15);
 		JTextField tTypeCompte = new JTextField(15);
 		JTextField tAge = new JTextField(15);
+		
 		JButton valider = new JButton("Valider");
 		
 		
@@ -137,27 +140,78 @@ public class Admin extends JFrame implements MouseListener{
 		this.setTitle("Fenetre Admin");
 		setLocationRelativeTo(null);
 		//setDefaultCloseOperation(EXIT_ON_CLOSE);
-		adminPan.setSize(new Dimension(250, 150));
-		setSize(new Dimension(250, 150));
+		adminPan.setSize(new Dimension(200,500));
+		setSize(new Dimension(250, 500));
+		
 		setContentPane(adminPan);
-		Scanner sc = new Scanner(System.in);
-
-
-		JLabel login = new JLabel("LOGIN");
-
-		JTextField txuser = new JTextField(15);
-
-		JTextField accepter = new JTextField("Supprimer");
-
+		JLabel log = new JLabel("Rentrez le login du compte à modifier : "); 
+		JLabel nom = new JLabel("Rentrez le nouveau nom : ");
+		JLabel prenom = new JLabel("Rentrez le nouveau prénom : ");
+		JLabel login = new JLabel("Rentrez le nouveau login : ");
+		JLabel mdp = new JLabel("Rentrez le nouveau mot de passe : ");
+		JLabel typecompte = new JLabel("Rentrez le nouveau type de compte : ");
+		JLabel age = new JLabel("Rentrez le nouvel age : ");
+		JTextField tLog = new JTextField(15);
+		JTextField tNom = new JTextField(15);
+		JTextField tPrenom = new JTextField(15);
+		JTextField tLogin = new JTextField(15);
+		JTextField tMdp = new JTextField(15);
+		JTextField tTypeCompte = new JTextField(15);
+		JTextField tAge = new JTextField(15);
+		JButton valider = new JButton("Valider");
+		
+		
+		adminPan.add(log);
+		adminPan.add(tLog);
+		adminPan.add(nom);
+		adminPan.add(tNom);
+		adminPan.add(prenom);
+		adminPan.add(tPrenom);
 		adminPan.add(login);
-		adminPan.add(txuser);
-		adminPan.add(accepter);
+		adminPan.add(tLogin);
+		adminPan.add(mdp);
+		adminPan.add(tMdp);
+		adminPan.add(typecompte);
+		adminPan.add(tTypeCompte);
+		adminPan.add(age);
+		adminPan.add(tAge);
+		adminPan.add(valider);
 
-		accepter.addActionListener(new ActionListener() {
+		valider.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
+				
+				String query = "UPDATE public.compte SET nomcompte = ?, prenomcompte = ?, logcompte = ?, pswdcompte = ?, typecompte = ?, agecompte = ? WHERE logcompte = ?;";
+
+				try {
+					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+					
+					prepare.setString(7, tLog.getText());
+					
+					prepare.setString(1, tNom.getText());
+					
+					prepare.setString(2, tPrenom.getText());
+					
+					prepare.setString(3, tLogin.getText());
+					
+					prepare.setString(4, tMdp.getText());
+					
+					prepare.setString(5, tTypeCompte.getText());
+					
+					prepare.setInt(6, Integer.parseInt(tAge.getText()));
+					//sc.nextLine();
+
+
+					prepare.execute();
+				}
+				catch (SQLException d) {
+					d.printStackTrace();
+				}
+
+				System.out.println("Le compte a bien été mis à jour !");
 
 			}
 		});
@@ -165,35 +219,7 @@ public class Admin extends JFrame implements MouseListener{
 
 
 
-		String query = "UPDATE public.compte SET nomcompte = ?, prenomcompte = ?, logcompte = ?, pswdcompte = ?, typecompte = ?, agecompte = ? WHERE logcompte = ?;";
-
-		try {
-			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
-			System.out.print("Rentrez le login du compte à modifier : ");
-			prepare.setString(7, sc.nextLine());
-			System.out.print("Rentrez le nouveau nom : ");
-			prepare.setString(1, sc.nextLine());
-			System.out.print("Rentrez le nouveau prénom : ");
-			prepare.setString(2, sc.nextLine());
-			System.out.print("Rentrez le nouveau login : ");
-			prepare.setString(3, sc.nextLine());
-			System.out.print("Rentrez le nouveau mot de passe : ");
-			prepare.setString(4, sc.nextLine());
-			System.out.print("Rentrez le nouveau type de compte : ");
-			prepare.setString(5, sc.nextLine());
-			System.out.print("Rentrez le nouvel age : ");
-			prepare.setInt(6, sc.nextInt());
-			//sc.nextLine();
-
-
-			prepare.execute();
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("Le compte a bien été mis à jour !");
+	
 
 		this.setVisible(true);
 		adminPan.setVisible(true);
