@@ -7,7 +7,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
+import Projet.Graphique;
 	public class  FenetreEtudiantFormateur extends JFrame implements MouseListener{
 		
 		public FenetreEtudiantFormateur(){
@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 			addMouseListener(this);
 			setResizable(false);
 			setLocationRelativeTo(null);
+			setTitle("Application Planning " + Graphique.loginCompte);
 			
 			JPanel pan1= new JPanel();
 

@@ -12,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import Projet.Graphique;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
 // 
@@ -25,6 +26,7 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		addMouseListener(this);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setTitle("Application Planning " + Graphique.loginCompte);
 		
 		JPanel pan1= new JPanel();
 
@@ -32,6 +34,8 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		setJMenuBar(bar);
 		JButton planning = new JButton("Planning");
 		bar.add(planning);
+		
+		//****************MENU COMPTE*****************
 		
 		JMenu Compte = new JMenu ("Compte");
 		bar.add(Compte);
@@ -66,6 +70,8 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 			}
 		});
 		
+		//***************MENU RESERVATION*********************
+		
 		JMenu Reservation = new JMenu("Reservation");
 		bar.add(Reservation, BorderLayout.CENTER);
 		JMenuItem CreerResa = new JMenuItem("Creer une Reservation");
@@ -95,9 +101,12 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 			}
 		});
 		
+		//*******************MENU SALLE********************
 		
 		JMenu Salle = new JMenu ("Salle");
 		bar.add(Salle);
+		JMenuItem Checker = new JMenuItem("Liste des Salles");
+		Salle.add(Checker);
 		JMenuItem CreerSalle = new JMenuItem("Creer Salle");
 		Salle.add(CreerSalle);
 		JMenu SuppSalle = new JMenu("Supprimer Salle");
@@ -109,6 +118,22 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		JMenuItem Dim = new JMenuItem("Changer de Dimension");
 		SuppSalle.add(Dim);
 		
+		//****************MENU ETUDIANT************************
+		
+		JMenu etudiant = new JMenu("Etudiant");
+		bar.add(etudiant);
+		JMenuItem integerApromo = new JMenuItem("Integrer a promo");
+		etudiant.add(integerApromo);
+		
+		//*****************MENU PROMO***************************
+		
+		JMenu promo = new JMenu("Promo");
+		bar.add(promo);
+//		do{
+//			
+//			JMenuItem afficherListe = new JMenuItem("salut"); 
+//		}while(false);
+//		
 		
 		this.setContentPane(pan1);
 		this.setVisible(true);
