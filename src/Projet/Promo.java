@@ -1,9 +1,14 @@
 package Projet;
 
-public abstract class Promo {
+public class Promo {
 	String nomPromo, description;
 	int nbEtud;
 	public Promo(){
+		
+		
+	}
+	
+	public void integerEtudiant(){
 		
 		
 	}

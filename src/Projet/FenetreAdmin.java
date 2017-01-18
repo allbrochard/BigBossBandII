@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import Projet.Graphique;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
-   
+	Promo prom = new Promo();
 	Admin adm = new Admin();
 	Reserver res = new Reserver();
 	
@@ -132,6 +132,14 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		JMenu etudiant = new JMenu("Etudiant");
 		bar.add(etudiant);
 		JMenuItem integerApromo = new JMenuItem("Integrer a promo");
+		integerApromo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				prom.integerEtudiant();
+				
+			}
+		});
 		etudiant.add(integerApromo);
 		
 		//*****************MENU PROMO***************************
