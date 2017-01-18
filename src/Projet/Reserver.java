@@ -57,10 +57,13 @@ public class Reserver extends JFrame{
 		resaSalle.add(numformateur);
 		resaSalle.add(tnumformateur);
 		
+		resaSalle.add(valider);
+		
 		this.setTitle("Reservation");
 		setLocationRelativeTo(null);
-		setSize(new Dimension(200, 500));
+		setSize(new Dimension(250, 500));
 		setContentPane(resaSalle);
+		setResizable(false);
 
 		valider.addActionListener(new ActionListener() {
 			
@@ -108,7 +111,7 @@ public class Reserver extends JFrame{
 				
 			}
 		});
-		
+		this.setVisible(true);
 		resaSalle.setVisible(true);
 	}
 
@@ -116,19 +119,19 @@ public class Reserver extends JFrame{
 		Scanner sc = new Scanner(System.in);
 		JPanel modifResa = new JPanel();
 		
-		JLabel nomresa = new JLabel();
-		JLabel dateresa = new JLabel();
-		JLabel nummatiere = new JLabel();
-		JLabel  numformateur = new JLabel();
-		JLabel numpromo = new JLabel();
-		JLabel  numsalle = new JLabel();
+		JLabel nomresa = new JLabel("Rentrez le nom de la réservation à modifier : ");
+		JLabel dateresa = new JLabel("Rentrez la nouvelle date : ");
+		JLabel nummatiere = new JLabel("Rentrez le nouveau numéro de la matière : ");
+		JLabel  numformateur = new JLabel("Rentrez le nouveau numéro du formateur : ");
+		JLabel numpromo = new JLabel("Rentrez le nouveau numéro de la promo : ");
+		JLabel  numsalle = new JLabel("Rentrez le nouveau numéro de la salle : ");
 
-		JTextField tnomresa = new JTextField();
-		JTextField tdateresa = new JTextField();
-		JTextField tnummatiere = new JTextField();
-		JTextField tnumformateur = new JTextField();
-		JTextField tnumpromo = new JTextField();
-		JTextField tnumsalle = new JTextField();
+		JTextField tnomresa = new JTextField(15);
+		JTextField tdateresa = new JTextField(15);
+		JTextField tnummatiere = new JTextField(15);
+		JTextField tnumformateur = new JTextField(15);
+		JTextField tnumpromo = new JTextField(15);
+		JTextField tnumsalle = new JTextField(15);
 
 		JButton valider = new JButton("Valider");
 		
@@ -144,10 +147,13 @@ public class Reserver extends JFrame{
 		modifResa.add(tnumpromo);
 		modifResa.add(numsalle);
 		modifResa.add(tnumsalle);
+		modifResa.add(valider);
+		
 		this.setTitle("Fenetre Modification Reservation");
 		setLocationRelativeTo(null);
-		setSize(new Dimension(200, 500));
+		setSize(new Dimension(268, 500));
 		setContentPane(modifResa);
+		setResizable(false);
 		
 		valider.addActionListener(new ActionListener() {
 			
@@ -192,8 +198,9 @@ public class Reserver extends JFrame{
 		JPanel suppResa = new JPanel();
 		this.setTitle("Reservation");
 		setLocationRelativeTo(null);
-		setSize(new Dimension(200, 500));
+		setSize(new Dimension(300, 500));
 		setContentPane(suppResa);
+		setResizable(false);
 		
 		JLabel nomResa = new JLabel("Rentrez le nom de la réservation à supprimer : ");
 		
@@ -224,7 +231,7 @@ public class Reserver extends JFrame{
 			}
 		});
 
-
+		this.setVisible(true);
 		suppResa.setVisible(true);
 		System.out.println("La réservation a bien été supprimée");
 	}
