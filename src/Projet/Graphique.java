@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 public class Graphique extends JFrame{
 
-	JTextField txuser = new JTextField(15);
+	static JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
 	
 	JPanel pan1= new JPanel();
@@ -30,7 +30,7 @@ public class Graphique extends JFrame{
 	static String typeCompte;
 	
 	String mdpCompte;
-	String loginCompte;
+	public static String loginCompte;
 	String mp, log;
 	
 	boolean test = false;
@@ -49,13 +49,13 @@ public class Graphique extends JFrame{
 
 		Connexion co = new Connexion();
 
-
+		
 
 		setSize(250,150);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
-
+		
 
 		pan1.add(login);
 		pan1.add(txuser);	
@@ -142,7 +142,7 @@ public class Graphique extends JFrame{
 			if(result.first())
 			{
 				typeCompte = result.getString(1);
-
+				
 			}
 		}
 		catch (SQLException e) {

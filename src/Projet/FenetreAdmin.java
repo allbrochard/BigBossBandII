@@ -12,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import Projet.Graphique;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
 // 
@@ -25,6 +26,7 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		addMouseListener(this);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		setTitle("Application Planning " + Graphique.loginCompte);
 		
 		JPanel pan1= new JPanel();
 
@@ -127,11 +129,11 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		
 		JMenu promo = new JMenu("Promo");
 		bar.add(promo);
-		do{
-			
-			JMenuItem afficherListe = new JMenuItem("salut"); 
-		}while(false);
-		
+//		do{
+//			
+//			JMenuItem afficherListe = new JMenuItem("salut"); 
+//		}while(false);
+//		
 		
 		this.setContentPane(pan1);
 		this.setVisible(true);

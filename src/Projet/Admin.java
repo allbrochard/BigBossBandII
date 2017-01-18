@@ -74,6 +74,7 @@ public class Admin{
 			prepare.setString(5, sc.nextLine());
 			System.out.print("Rentrez le nouvel age : ");
 			prepare.setInt(6, sc.nextInt());
+			//sc.nextLine();
 			
 			
 			prepare.execute();
