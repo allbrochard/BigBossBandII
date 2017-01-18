@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
 
-public class Connexion {
+public class Connexion{
 
 	private String url = "jdbc:postgresql://localhost:5432/projetBBB";
 
@@ -50,6 +50,7 @@ public class Connexion {
 
 		}
 
+		
 	}
 	public static Connection getInstance(){
 		if(connect == null){

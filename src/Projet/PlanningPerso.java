@@ -31,15 +31,18 @@ public class PlanningPerso extends JFrame {
 		Color bleu = new Color(0,110,212);
 		Color vert = new Color(0,150,20);
 		
+		JPanel pan = new JPanel();
 		JPanel pan2 = new JPanel();
+		/*
 		JOptionPane jop = new JOptionPane("boom");
 		jop.showMessageDialog(null,"Bienvenu numero 2","haut + bas + gauche + droite + bas + start",JOptionPane.INFORMATION_MESSAGE);
 		JOptionPane jop3 = new JOptionPane("boom");
-		jop3.showMessageDialog(null,"Votre planning du mois arrive ","personne ne lis ici",JOptionPane.INFORMATION_MESSAGE);
+		jop3.showMessageDialog(null,"Votre planning du mois arrive ","Carré, Carré, rond , bas, haut",JOptionPane.INFORMATION_MESSAGE);
 		JOptionPane jop4 = new JOptionPane("boom");
-		jop4.showMessageDialog(null,"Passez une bonne journée  ","personne ne lis ici",JOptionPane.INFORMATION_MESSAGE);
+		jop4.showMessageDialog(null,"Passez une bonne journée "," on ne m'a pas éffacé",JOptionPane.INFORMATION_MESSAGE);
 		JOptionPane jop5 = new JOptionPane("boom");
 		JOptionPane.showMessageDialog(null,"","La Fiesta",JOptionPane.INFORMATION_MESSAGE,new ImageIcon("C:/Users/Flo/Downloads/patoche.jpg"));
+		*/
 		JMenuBar bar = new JMenuBar();
 		setJMenuBar(bar);
 		bar.setBackground(bleu);
@@ -55,7 +58,7 @@ public class PlanningPerso extends JFrame {
 		
 		
 		
-		pan2.setLayout(new GridLayout(5,4));
+		pan2.setLayout(new GridLayout(6,4));
 		pan2.setBorder(null);
 		JPanel logo = new JPanel();
 		JLabel logo1 = new JLabel(new ImageIcon("C:/Users/Flo/Downloads/umbrella.jpg"));
@@ -165,6 +168,7 @@ public class PlanningPerso extends JFrame {
 		JPanel s5 = new JPanel();
 		pan2.add(s5);
 	
+		pan2.add(pan);
 	/*	pan.setLayout(new BorderLayout());
 		pan.add(pan2,BorderLayout.NORTH);
 		pan.add(pan2,BorderLayout.WEST);
