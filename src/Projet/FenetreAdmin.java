@@ -15,7 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
-// 
+   
 	Admin adm = new Admin();
 	Reserver res = new Reserver();
 	
@@ -31,8 +31,6 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		
 		JPanel pan1= new JPanel();
 		
-		JPanel crCompte = new JPanel(); 
-	
 		JMenuBar bar = new JMenuBar();
 		setJMenuBar(bar);
 		JButton planning = new JButton("Planning");
@@ -50,12 +48,6 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				adm.creeCompte();		
-				add("creercompte",crCompte);
-				JPanel creerCompte = new JPanel();
-				pan1.add(creerCompte);
-				add(creerCompte);
-				pack();
-				
 				
 			}
 		});
