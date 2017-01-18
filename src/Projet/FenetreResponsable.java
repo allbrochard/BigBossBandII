@@ -13,7 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
+import Projet.Graphique;
 public class FenetreResponsable extends JFrame implements MouseListener{
 	Reserver res = new Reserver();
 	public FenetreResponsable(){
@@ -23,7 +23,8 @@ public class FenetreResponsable extends JFrame implements MouseListener{
 		addMouseListener(this);
 		setResizable(false);
 		setLocationRelativeTo(null);
-	
+		setTitle("Application Planning " + Graphique.loginCompte);
+		
 		JPanel pan1= new JPanel();
 		
 		JMenuBar bar = new JMenuBar();

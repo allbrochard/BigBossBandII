@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
 
-public class Connexion {
+public class Connexion{
 
 	private String url = "jdbc:postgresql://localhost:5432/projetBBB";
 
@@ -36,7 +36,7 @@ public class Connexion {
 		url = "jdbc:postgresql://localhost:5432/projetBBB";
 		user = "postgres";
 		System.out.print("Entrez votre mot de passe postgres : ");
-		passwd = sc.nextLine();
+		passwd = "z45rik8521";//sc.nextLine();
 
 
 
@@ -50,6 +50,7 @@ public class Connexion {
 
 		}
 
+		
 	}
 	public static Connection getInstance(){
 		if(connect == null){

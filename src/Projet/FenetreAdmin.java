@@ -1,6 +1,7 @@
 package Projet;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -12,9 +13,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import Projet.Graphique;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
-// 
+	Promo prom = new Promo();
 	Admin adm = new Admin();
 	Reserver res = new Reserver();
 	
@@ -25,26 +27,37 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		addMouseListener(this);
 		setResizable(false);
 		setLocationRelativeTo(null);
+
+		//CardLayout C1 = new CardLayout();
+		//setLayout(C1);
+
+		setTitle("Application Planning " + Graphique.loginCompte);
 		
 		JPanel pan1= new JPanel();
-
+		
 		JMenuBar bar = new JMenuBar();
 		setJMenuBar(bar);
 		JButton planning = new JButton("Planning");
 		bar.add(planning);
 		
+		//****************MENU COMPTE*****************
+		
 		JMenu Compte = new JMenu ("Compte");
 		bar.add(Compte);
 		JMenuItem CreerCompte = new JMenuItem("Creer Compte");
 		Compte.add(CreerCompte);	
+	
+		
 		CreerCompte.addActionListener(new ActionListener() {
+			
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				adm.creeCompte();
+				adm.creeCompte();		
 				
 			}
 		});
+		
 		JMenuItem ModifCompte = new JMenuItem("Modifier Compte");
 		Compte.add(ModifCompte);
 		ModifCompte.addActionListener(new ActionListener() {
@@ -65,6 +78,8 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 				
 			}
 		});
+		
+		//***************MENU RESERVATION*********************
 		
 		JMenu Reservation = new JMenu("Reservation");
 		bar.add(Reservation, BorderLayout.CENTER);
@@ -95,9 +110,12 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 			}
 		});
 		
+		//*******************MENU SALLE********************
 		
 		JMenu Salle = new JMenu ("Salle");
 		bar.add(Salle);
+		JMenuItem Checker = new JMenuItem("Liste des Salles");
+		Salle.add(Checker);
 		JMenuItem CreerSalle = new JMenuItem("Creer Salle");
 		Salle.add(CreerSalle);
 		JMenu SuppSalle = new JMenu("Supprimer Salle");
@@ -109,6 +127,40 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		JMenuItem Dim = new JMenuItem("Changer de Dimension");
 		SuppSalle.add(Dim);
 		
+		//****************MENU ETUDIANT************************
+		
+		JMenu etudiant = new JMenu("Etudiant");
+		bar.add(etudiant);
+		JMenuItem integerApromo = new JMenuItem("Integrer a promo");
+		integerApromo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				prom.integrerEtudiant();
+				
+			}
+		});
+		etudiant.add(integerApromo);
+		JMenuItem listeEtudiant = new JMenuItem("Liste des etudiant");
+		listeEtudiant.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				prom.afficheListeEtud();
+				
+			}
+		});
+		etudiant.add(listeEtudiant);
+		
+		//*****************MENU PROMO***************************
+		
+//		JMenu promo = new JMenu("Promo");
+//		bar.add(promo);
+//		do{
+//			
+//			JMenuItem afficherListe = new JMenuItem("salut"); 
+//		}while(false);
+//		
 		
 		this.setContentPane(pan1);
 		this.setVisible(true);
