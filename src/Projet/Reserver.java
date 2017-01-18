@@ -114,7 +114,6 @@ public class Reserver extends JFrame{
 
 	public void modifResa(){
 		Scanner sc = new Scanner(System.in);
-
 		JPanel modifResa = new JPanel();
 		
 		JLabel nomresa = new JLabel();
@@ -130,35 +129,62 @@ public class Reserver extends JFrame{
 		JTextField tnumformateur = new JTextField();
 		JTextField tnumpromo = new JTextField();
 		JTextField tnumsalle = new JTextField();
+
+		JButton valider = new JButton("Valider");
 		
-		JButton valier = new JButton("valider");
+		modifResa.add(nomresa);
+		modifResa.add(tnomresa);
+		modifResa.add(dateresa);
+		modifResa.add(tdateresa);
+		modifResa.add(nummatiere);
+		modifResa.add(tnummatiere);
+		modifResa.add(numformateur);
+		modifResa.add(tnumformateur);
+		modifResa.add(numpromo);
+		modifResa.add(tnumpromo);
+		modifResa.add(numsalle);
+		modifResa.add(tnumsalle);
+		this.setTitle("Fenetre Modification Reservation");
+		setLocationRelativeTo(null);
+		setSize(new Dimension(200, 500));
+		setContentPane(modifResa);
 		
-
-		String query = "UPDATE public.reservation SET dateresa = ?, idmatierefk = ?, idcomptefk = ?, idpromofk = ?, idsallefk = ? WHERE nomresa = ?;";
-		try {
-			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
-			System.out.print("Rentrez le nom de la réservation à modifier : ");
-			prepare.setString(6, sc.nextLine());
-			System.out.print("Rentrez la nouvelle date : ");
-			prepare.setString(1, sc.nextLine());
-			System.out.print("Rentrez le nouveau numéro de la matière : ");
-			prepare.setInt(2, sc.nextInt());
-			System.out.print("Rentrez le nouveau numéro du formateur : ");
-			prepare.setInt(3, sc.nextInt());
-			System.out.print("Rentrez le nouveau numéro de la promo : ");
-			prepare.setInt(4, sc.nextInt());
-			System.out.print("Rentrez le nouveau numéro de la salle : ");
-			prepare.setInt(5, sc.nextInt());
+		valider.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String query = "UPDATE public.reservation SET dateresa = ?, idmatierefk = ?, idcomptefk = ?, idpromofk = ?, idsallefk = ? WHERE nomresa = ?;";
+				try {
+					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
 
-			prepare.execute();
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
+					System.out.print("Rentrez le nom de la réservation à modifier : ");
+					prepare.setString(6, tnomresa.getText());
+					System.out.print("Rentrez la nouvelle date : ");
+					prepare.setString(1, tdateresa.getText());
+					System.out.print("Rentrez le nouveau numéro de la matière : ");
+					prepare.setInt(2, Integer.parseInt(tnummatiere.getText()));
+					System.out.print("Rentrez le nouveau numéro du formateur : ");
+					prepare.setInt(3, Integer.parseInt(tnumformateur.getText()));
+					System.out.print("Rentrez le nouveau numéro de la promo : ");
+					prepare.setInt(4, Integer.parseInt(tnumpromo.getText()));
+					System.out.print("Rentrez le nouveau numéro de la salle : ");
+					prepare.setInt(5, Integer.parseInt(tnumsalle.getText()));
 
-		System.out.println("Le compte a bien été mis à jour !");
+					
+					prepare.execute();
+				}
+				catch (SQLException d) {
+					d.printStackTrace();
+				}
+
+				System.out.println("Le compte a bien été mis à jour !");
+				
+			}
+		});
+		  
+		this.setVisible(true);
+		modifResa.setVisible(true);
 	}
 
 	public void supprRes(){
