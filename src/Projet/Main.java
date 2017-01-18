@@ -5,10 +5,16 @@ public class Main {
 	public static void main(String[] args) {
 
 		//Admin adm = new Admin();
+
 		//Graphique graph = new Graphique();
 	//	Reserver res = new Reserver();
 	//	Graphique graph = new Graphique();
 		Planning plan= new Planning();
+
+		
+		//Reserver res = new Reserver();
+
+		
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
 		//FenetreAdmin JFrame = new FenetreAdmin();
 
@@ -16,6 +22,7 @@ public class Main {
 		//adm.modifCompte();
 		//adm.creeCompte();
 		//res.reserverSalle();
+
 //		res.modifResa();
 
 	
@@ -24,5 +31,9 @@ public class Main {
 		
 
 
+
+		//res.supprRes();
+		//res.modifResa();
+		
 	}
 }

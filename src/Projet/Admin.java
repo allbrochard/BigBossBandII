@@ -87,6 +87,7 @@ public class Admin extends JFrame implements MouseListener{
 			prepare.setString(5, sc.nextLine());
 			System.out.print("Rentrez le nouvel age : ");
 			prepare.setInt(6, sc.nextInt());
+			//sc.nextLine();
 			
 			
 			prepare.execute();
@@ -101,7 +102,6 @@ public class Admin extends JFrame implements MouseListener{
 	//Méthode pour supprimer un compte (utilisable uniquement en mode admin)
 	public void supprCompte(){
 		Scanner sc = new Scanner(System.in);
-		boolean res = false;
 		
 		String query = "DELETE FROM public.compte WHERE logcompte = ?;";
 		try {
