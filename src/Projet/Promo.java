@@ -107,12 +107,11 @@ public class Promo extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+
 				
 				JPanel resultat = new JPanel();
 				resultat.setLayout(new BoxLayout(resultat,BoxLayout.PAGE_AXIS));
 				resultat.setSize(new Dimension(200, 500));
-
-				
 				
 				text = tPromo.getText();
 				String query = "SELECT COUNT(*) AS nbetudiant "
@@ -160,22 +159,20 @@ public class Promo extends JFrame{
 
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
 					result.beforeFirst();
-					resultat.add(new JLabel("nom  prenom  login"));
-					resultat.add(new JLabel("    "));
+
+					resultat.add(new JLabel("Nom  " + "Prenom  " + "Login  "));
+					resultat.add(new JLabel(" "));
+
 						while(result.next()){         
 							for(int i = 1; i <= 3; i++)
 								infoEtude = infoEtude + result.getObject(i).toString() + " ";
-								System.out.println("");
 								listeEtude = new JLabel(infoEtude);
-								infoEtude="";
+								infoEtude = "";
 								resultat.add(listeEtude);
-								System.out.println(infoEtude);
-								
-							}
-							//resultat.add(listeEtude);
-							System.out.println(infoEtude);
+						}
+							resultat.add(listeEtude);
+
 							result.close();
-							infoEtude = "";
 
 				}
 				catch (SQLException d) {
@@ -183,10 +180,11 @@ public class Promo extends JFrame{
 				}
 				panRes.add(resultat);
 				resultat.setVisible(true);
+
 			}
 			
 		});
-
+		
 		panRes.setVisible(true);
 		setVisible(true);
 
