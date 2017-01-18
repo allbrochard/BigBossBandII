@@ -74,7 +74,7 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-
+							
 							connexionLog();
 							affichageAppli();
 							test=true;		
