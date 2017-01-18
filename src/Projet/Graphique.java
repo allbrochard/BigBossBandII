@@ -18,27 +18,27 @@ public class Graphique extends JFrame{
 
 	static JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
-	
+
 	JPanel pan1= new JPanel();
 	JPanel pan2 = new JPanel();
-	
+
 	JLabel login = new JLabel("LOGIN");
 	JLabel password = new JLabel("Password");
-	
+
 	JButton connecte = new JButton ("Connection");
-	
+
 	static String typeCompte;
-	
+
 	String mdpCompte;
 	public static String loginCompte;
 	String mp, log;
-	
+
 	boolean test = false;
 	/**
 	 * affichage de la fenetre de logIn, et permet d'acceder au fenetre des différent type de compte
 	 */
 	public Graphique (){
-		
+
 		login = new JLabel("LOGIN");
 
 		password = new JLabel("Password");
@@ -49,13 +49,13 @@ public class Graphique extends JFrame{
 
 		Connexion co = new Connexion();
 
-		
+
 
 		setSize(250,150);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		
+
 
 		pan1.add(login);
 		pan1.add(txuser);	
@@ -74,7 +74,7 @@ public class Graphique extends JFrame{
 
 					if(log.equals(testLogin())){
 						if(mp.equals(recupeMP())){
-							
+
 							connexionLog();
 							affichageAppli();
 							test=true;		
@@ -90,7 +90,7 @@ public class Graphique extends JFrame{
 				}
 			});
 		}while(test);
-		
+
 
 		this.setContentPane(pan2);
 		pan2.setVisible(true);
@@ -134,7 +134,7 @@ public class Graphique extends JFrame{
 		String query = "SELECT typecompte FROM public.compte WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-			
+
 			prepare.setString(1, log);
 
 			prepare.execute();
@@ -142,7 +142,7 @@ public class Graphique extends JFrame{
 			if(result.first())
 			{
 				typeCompte = result.getString(1);
-				
+
 			}
 		}
 		catch (SQLException e) {
