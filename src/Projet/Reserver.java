@@ -12,7 +12,13 @@ public class Reserver {
 		
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;
-		String query = "INSERT INTO public.reservation (dateresa, idmatierefk, idformateurfk, idpromofk, idsallefk, nomresa) VALUES (?,(SELECT idmatiere FROM public.matiere WHERE idmatiere = ?),(SELECT idpromo FROM public.promo WHERE idpromo = ?),(SELECT idsalle FROM public.salles WHERE idsalle = ?),(SELECT idformateur FROM public.formateur WHERE idformateur = ?),?) RETURNING idresa;";
+		String query = "INSERT INTO public.reservation (dateresa, idmatierefk, idformateurfk, idpromofk, idsallefk, nomresa)"
+				+ " VALUES (?,"
+				+ "(SELECT idmatiere FROM public.matiere WHERE idmatiere = ?),"
+				+ "(SELECT idpromo FROM public.promo WHERE idpromo = ?),"
+				+ "(SELECT idsalle FROM public.salles WHERE idsalle = ?),"
+				+ "(SELECT idformateur FROM public.formateur WHERE idformateur = ?),?)"
+				+ " RETURNING idresa;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
@@ -82,12 +88,12 @@ public class Reserver {
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;
 		
-		String query = "DELETE FROM public.reservation WHERE idresa = ?;";
+		String query = "DELETE FROM public.reservation WHERE nomresa = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
-			System.out.print("Rentrez le numero de la réservation à supprimer : ");
-			prepare.setInt(1, sc.nextInt());
+			System.out.print("Rentrez le nom de la réservation à supprimer : ");
+			prepare.setString(1, sc.nextLine());
 			
 			prepare.execute();
 		}
