@@ -1,5 +1,7 @@
 package Projet;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JFrame;
@@ -9,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import Projet.Graphique;
 	public class  FenetreEtudiantFormateur extends JFrame implements MouseListener{
+		PlanningPerso plan = new PlanningPerso();
 		
 		public FenetreEtudiantFormateur(){
 			
@@ -30,6 +33,14 @@ import Projet.Graphique;
 			JMenu PlanningPerso = new JMenu(" Planning Personnelle ");
 			Planning.add(PlanningPerso);
 			JMenuItem Planningsemaine = new JMenuItem(" Planning semaine");
+			Planningsemaine.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+				plan.ckeckPlan();
+					
+				}
+			});
 			PlanningPerso.add(Planningsemaine);
 			JMenuItem PlanningMois = new JMenuItem("Planning Mois");
 			PlanningPerso.add(PlanningMois);
