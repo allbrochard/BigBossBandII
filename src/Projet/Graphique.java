@@ -16,24 +16,29 @@ import javax.swing.JTextField;
 
 public class Graphique extends JFrame{
 
-	String mp, log;
-
-
 	JTextField txuser = new JTextField(15);
 	JTextField txuser2 = new JTextField(15);  
+	
 	JPanel pan1= new JPanel();
 	JPanel pan2 = new JPanel();
+	
 	JLabel login = new JLabel("LOGIN");
 	JLabel password = new JLabel("Password");
+	
 	JButton connecte = new JButton ("Connection");
-	String a="allan";
-	String b="allan";
+	
 	static String typeCompte;
+	
 	String mdpCompte;
 	String loginCompte;
+	String mp, log;
+	
 	boolean test = false;
+	/**
+	 * affichage de la fenetre de logIn, et permet d'acceder au fenetre des différent type de compte
+	 */
 	public Graphique (){
-
+		
 		login = new JLabel("LOGIN");
 
 		password = new JLabel("Password");
@@ -96,8 +101,6 @@ public class Graphique extends JFrame{
 		this.setVisible(true); 
 
 	}
-	
-	
 	/**
 	 * switch pour savoir qu'elle type de compte c'est conneceter
 	 */
@@ -197,7 +200,6 @@ public class Graphique extends JFrame{
 		}
 		return loginCompte;
 	}
-
 	public void mouseClicked(MouseEvent arg0) {
 
 
