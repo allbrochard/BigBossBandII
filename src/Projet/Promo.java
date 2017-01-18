@@ -17,7 +17,8 @@ import javax.swing.JTextField;
 
 public class Promo extends JFrame{
 	String nomPromo, description, text;
-	
+	JLabel nbEtude2;
+	JLabel listeEtude;
 	int nbEtud;
 	public Promo(){
 
@@ -110,15 +111,14 @@ public class Promo extends JFrame{
 
 					System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
-					//sc.nextLine();
 					
-
+				
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
 					if(result.first())
 					{
 						nbEtud = result.getInt(1);
-
+						nbEtude2 = new JLabel("" + nbEtud + " etudiant dans la promo");
 					}
 					result.close();
 					
@@ -126,7 +126,7 @@ public class Promo extends JFrame{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-
+				
 				//***********LISTE ETUDIANT*************
 				
 				String query2 = "SELECT nomcompte, prenomcompte "
@@ -139,10 +139,21 @@ public class Promo extends JFrame{
 
 					System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
-					//sc.nextLine();
-
 
 					prepare.execute();
+					ResultSet result = prepare.getResultSet();
+					  
+					if(result.first())
+					{
+					    while(result.next()){         
+					          for(int i = 2; i <= 3; i++)
+					            System.out.print(result.getObject(i).toString());
+					              
+					          System.out.println("\n---------------------------------");
+
+					        }
+					}
+					result.close();
 					
 				}
 				catch (SQLException d) {
