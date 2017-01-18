@@ -7,7 +7,7 @@ public class Main {
 		//Admin adm = new Admin();
 
 		//PlanningAdmin planAd= new PlanningAdmin();
-		PlanningPerso planpers = new PlanningPerso();
+		//PlanningPerso planpers = new PlanningPerso();
 
 
 		//Graphique graph = new Graphique();
@@ -20,12 +20,13 @@ public class Main {
 		//	Graphique graph = new Graphique();
 
 		//Planning plan= new Planning();
+
 		//Reserver res = new Reserver();
 		//Promo prom = new Promo();
 		//prom.integrerEtudiant();
 		
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
-		//FenetreAdmin JFrame = new FenetreAdmin();
+		FenetreAdmin JFrame = new FenetreAdmin();
 
 		//FenetreResponsable respon = new FenetreResponsable();
 		//adm.modifCompte();
