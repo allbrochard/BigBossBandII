@@ -1,15 +1,20 @@
 package Projet;
 
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Reserver {
+public class Reserver extends JFrame{
 	int id ;
 
 	public boolean reserverSalle (){
@@ -78,13 +83,14 @@ public class Reserver {
 
 	public void modifResa(){
 		Scanner sc = new Scanner(System.in);
-
-		JPanel nomresa = new JPanel();
-		JPanel dateresa = new JPanel();
-		JPanel nummatiere = new JPanel();
-		JPanel  numformateur = new JPanel();
-		JPanel numpromo = new JPanel();
-		JPanel  numsalle = new JPanel();
+		JPanel modifResa = new JPanel();
+		
+		JLabel nomresa = new JLabel();
+		JLabel dateresa = new JLabel();
+		JLabel nummatiere = new JLabel();
+		JLabel  numformateur = new JLabel();
+		JLabel numpromo = new JLabel();
+		JLabel  numsalle = new JLabel();
 
 		JTextField tnomresa = new JTextField();
 		JTextField tdateresa = new JTextField();
@@ -92,32 +98,60 @@ public class Reserver {
 		JTextField tnumformateur = new JTextField();
 		JTextField tnumpromo = new JTextField();
 		JTextField tnumsalle = new JTextField();
+		JButton valider = new JButton("Valider");
+		
+		modifResa.add(nomresa);
+		modifResa.add(tnomresa);
+		modifResa.add(dateresa);
+		modifResa.add(tdateresa);
+		modifResa.add(nummatiere);
+		modifResa.add(tnummatiere);
+		modifResa.add(numformateur);
+		modifResa.add(tnumformateur);
+		modifResa.add(numpromo);
+		modifResa.add(tnumpromo);
+		modifResa.add(numsalle);
+		modifResa.add(tnumsalle);
+		this.setTitle("Fenetre Modification Reservation");
+		setLocationRelativeTo(null);
+		setSize(new Dimension(200, 500));
+		setContentPane(modifResa);
+		
+		valider.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String query = "UPDATE public.reservation SET dateresa = ?, idmatierefk = ?, idcomptefk = ?, idpromofk = ?, idsallefk = ? WHERE nomresa = ?;";
+				try {
+					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-		String query = "UPDATE public.reservation SET dateresa = ?, idmatierefk = ?, idcomptefk = ?, idpromofk = ?, idsallefk = ? WHERE nomresa = ?;";
-		try {
-			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+					System.out.print("Rentrez le nom de la réservation à modifier : ");
+					prepare.setString(6, tnomresa.getText());
+					System.out.print("Rentrez la nouvelle date : ");
+					prepare.setString(1, tdateresa.getText());
+					System.out.print("Rentrez le nouveau numéro de la matière : ");
+					prepare.setInt(2, Integer.parseInt(tnummatiere.getText()));
+					System.out.print("Rentrez le nouveau numéro du formateur : ");
+					prepare.setInt(3, Integer.parseInt(tnumformateur.getText()));
+					System.out.print("Rentrez le nouveau numéro de la promo : ");
+					prepare.setInt(4, Integer.parseInt(tnumpromo.getText()));
+					System.out.print("Rentrez le nouveau numéro de la salle : ");
+					prepare.setInt(5, Integer.parseInt(tnumsalle.getText()));
 
-			System.out.print("Rentrez le nom de la réservation à modifier : ");
-			prepare.setString(6, sc.nextLine());
-			System.out.print("Rentrez la nouvelle date : ");
-			prepare.setString(1, sc.nextLine());
-			System.out.print("Rentrez le nouveau numéro de la matière : ");
-			prepare.setInt(2, sc.nextInt());
-			System.out.print("Rentrez le nouveau numéro du formateur : ");
-			prepare.setInt(3, sc.nextInt());
-			System.out.print("Rentrez le nouveau numéro de la promo : ");
-			prepare.setInt(4, sc.nextInt());
-			System.out.print("Rentrez le nouveau numéro de la salle : ");
-			prepare.setInt(5, sc.nextInt());
+					
+					prepare.execute();
+				}
+				catch (SQLException d) {
+					d.printStackTrace();
+				}
 
-
-			prepare.execute();
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("Le compte a bien été mis à jour !");
+				System.out.println("Le compte a bien été mis à jour !");
+				
+			}
+		});
+		  
+		this.setVisible(true);
+		modifResa.setVisible(true);
 	}
 
 	public void supprRes(){
