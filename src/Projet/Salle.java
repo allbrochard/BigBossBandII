@@ -12,6 +12,7 @@ public class Salle {
 		this.nbChaise=nbChaise;
 		this.videoProj=videoProj;
 		this.tableau=tableau;
+		
 	}
 
 
