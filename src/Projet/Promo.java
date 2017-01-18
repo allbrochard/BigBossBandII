@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 public class Promo extends JFrame{
 	String nomPromo, description, text;
-
+	
 	int nbEtud;
 	public Promo(){
 
@@ -111,9 +111,17 @@ public class Promo extends JFrame{
 					System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
 					//sc.nextLine();
-
+					
 
 					prepare.execute();
+					ResultSet result = prepare.getResultSet();
+					if(result.first())
+					{
+						nbEtud = result.getInt(1);
+
+					}
+					result.close();
+					
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
@@ -135,6 +143,7 @@ public class Promo extends JFrame{
 
 
 					prepare.execute();
+					
 				}
 				catch (SQLException d) {
 					d.printStackTrace();

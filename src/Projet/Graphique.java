@@ -144,6 +144,7 @@ public class Graphique extends JFrame{
 				typeCompte = result.getString(1);
 
 			}
+			result.close();
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

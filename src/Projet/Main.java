@@ -16,10 +16,10 @@ public class Main {
 
 		//Graphique graph = new Graphique();
 		//Reserver res = new Reserver();
-		//Graphique graph = new Graphique();
+		Graphique graph = new Graphique();
 		//Planning plan= new Planning();
 
-		Connexion con = new Connexion();
+		//Connexion con = new Connexion();
 		
 
 		//Reserver res = new Reserver();
