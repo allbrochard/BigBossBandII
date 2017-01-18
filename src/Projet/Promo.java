@@ -29,31 +29,31 @@ public class Promo extends JFrame{
 		//************AJOUTER ETUDIANT***********
 		Scanner sc = new Scanner(System.in);
 		JPanel panRes = new JPanel();
-		
+
 		JLabel numCompte = new JLabel("Rentrez le numéro du compte : ");
 		JLabel numPromo = new JLabel("Rentrez le numéro de la promo : ");
-		
+
 		JTextField tNumCompte = new JTextField(15);
 		JTextField tNumPromo = new JTextField(15);
-		
+
 		JButton valider = new JButton("valider");
-		
-		
+
+
 		setLocationRelativeTo(null);
 		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(new Dimension(200, 300));
-		
+
 		//setSize(new Dimension(800, 800));
 		setContentPane(panRes);
-		
+
 		panRes.add(numCompte);
 		panRes.add(tNumCompte);
 		panRes.add(numPromo);
 		panRes.add(tNumPromo);
 		panRes.add(valider);
-		
+
 		valider.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String query = "INSERT INTO public.etudiant (idcomptefk, idpromofk) "
@@ -77,7 +77,7 @@ public class Promo extends JFrame{
 				}
 			}
 		});
-		
+
 		panRes.setVisible(true);
 		setVisible(true);
 	}
@@ -88,17 +88,17 @@ public class Promo extends JFrame{
 		setLocationRelativeTo(null);
 		setSize(new Dimension(200, 300));
 		setContentPane(panRes);
-		
+
 		JLabel promo = new JLabel("Rentrez le nom de la promo : ");
 		JTextField tPromo = new JTextField(15);
 		JButton valider = new JButton("valider");
-		
+
 		panRes.add(promo);
 		panRes.add(tPromo);
 		panRes.add(valider);
-		
+
 		valider.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				text = tPromo.getText();
@@ -111,8 +111,8 @@ public class Promo extends JFrame{
 
 					System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
-					
-				
+
+
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
 					if(result.first())
@@ -121,14 +121,14 @@ public class Promo extends JFrame{
 						nbEtude2 = new JLabel("" + nbEtud + " etudiant dans la promo");
 					}
 					result.close();
-					
+
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-				
+
 				//***********LISTE ETUDIANT*************
-				
+
 				String query2 = "SELECT nomcompte, prenomcompte "
 						+ "FROM public.etudiant, public.compte, public.promo "
 						+ "WHERE etudiant.idpromofk = promo.idpromo "
@@ -142,27 +142,27 @@ public class Promo extends JFrame{
 
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
-					  //on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
+					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
 					if(result.first())
 					{
-					    while(result.next()){         
-					          for(int i = 2; i <= 3; i++)
-					            System.out.print(result.getObject(i).toString());
-					              
-					          System.out.println("\n---------------------------------");
+						while(result.next()){         
+							for(int i = 2; i <= 3; i++)
+								System.out.print(result.getObject(i).toString());
 
-					        }
+							System.out.println("\n---------------------------------");
+
+						}
 					}
 					result.close();
-					
+
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-				
+
 			}
 		});
-		
+
 		panRes.setVisible(true);
 		setVisible(true);
 
