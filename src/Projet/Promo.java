@@ -1,5 +1,6 @@
 package Projet;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,11 +8,13 @@ import java.util.Scanner;
 
 public class Promo {
 	String nomPromo, description, text;
+
 	int nbEtud;
 	public Promo(){
 
 
 	}
+
 	public void integrerEtudiant(){
 		//************AJOUTER ETUDIANT***********
 		Scanner sc = new Scanner(System.in);
@@ -36,6 +39,7 @@ public class Promo {
 			d.printStackTrace();
 		}
 	}
+
 	public void afficheListeEtud(){
 		//***********NOMBRE ETUDIANT************	
 		// a décommenter text = txuser.gettext();
