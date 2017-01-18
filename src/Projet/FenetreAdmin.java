@@ -1,6 +1,7 @@
 package Projet;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,7 +16,7 @@ import javax.swing.JPanel;
 import Projet.Graphique;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
-// 
+   
 	Admin adm = new Admin();
 	Reserver res = new Reserver();
 	
@@ -26,10 +27,14 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		addMouseListener(this);
 		setResizable(false);
 		setLocationRelativeTo(null);
+
+		//CardLayout C1 = new CardLayout();
+		//setLayout(C1);
+
 		setTitle("Application Planning " + Graphique.loginCompte);
 		
 		JPanel pan1= new JPanel();
-
+		
 		JMenuBar bar = new JMenuBar();
 		setJMenuBar(bar);
 		JButton planning = new JButton("Planning");
@@ -41,14 +46,18 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		bar.add(Compte);
 		JMenuItem CreerCompte = new JMenuItem("Creer Compte");
 		Compte.add(CreerCompte);	
+	
+		
 		CreerCompte.addActionListener(new ActionListener() {
+			
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				adm.creeCompte();
+				adm.creeCompte();		
 				
 			}
 		});
+		
 		JMenuItem ModifCompte = new JMenuItem("Modifier Compte");
 		Compte.add(ModifCompte);
 		ModifCompte.addActionListener(new ActionListener() {
