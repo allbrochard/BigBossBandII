@@ -88,7 +88,6 @@ public class Admin{
 	//Méthode pour supprimer un compte (utilisable uniquement en mode admin)
 	public void supprCompte(){
 		Scanner sc = new Scanner(System.in);
-		boolean res = false;
 		
 		String query = "DELETE FROM public.compte WHERE logcompte = ?;";
 		try {

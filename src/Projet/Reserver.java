@@ -87,7 +87,6 @@ public class Reserver {
 
 	public void supprRes(){
 		Scanner sc = new Scanner(System.in);
-		boolean res = false;
 		
 		String query = "DELETE FROM public.reservation WHERE nomresa = ?;";
 		try {
