@@ -5,11 +5,12 @@ public class Main {
 	public static void main(String[] args) {
 
 		//Admin adm = new Admin();
-
+		//PlanningAdmin planAd= new PlanningAdmin();
+		PlanningPerso planpers = new PlanningPerso();
 		//Graphique graph = new Graphique();
-	//	Reserver res = new Reserver();
-	//	Graphique graph = new Graphique();
-		Planning plan= new Planning();
+		//	Reserver res = new Reserver();
+		//	Graphique graph = new Graphique();
+		//Planning plan= new Planning();
 
 		
 		//Reserver res = new Reserver();

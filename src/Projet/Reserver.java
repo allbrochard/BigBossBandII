@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 public class Reserver {
 	int id ;
 	
@@ -22,20 +25,26 @@ public class Reserver {
 				+ " RETURNING idresa;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-			
+			JPanel resasalle = new JPanel();
+			JLabel date = new JLabel("Rentrez la date");
 			System.out.print("Rentrez la date : ");
-			prepare.setString(1, sc.nextLine());
+			//prepare.setString(1, sc.nextLine());
+			JLabel nomresa = new JLabel("Rentrez le nom de la réservation : ");
 			System.out.print("Rentrez le nom de la réservation : ");
-			prepare.setString(6, sc.nextLine());
+			//prepare.setString(6, sc.nextLine());
+			JLabel nummatiere = new JLabel("Rentrez le numero de la matiere : ");
 			System.out.print("Rentrez le numero de la matiere : ");
-			prepare.setInt(2, sc.nextInt());
+			//prepare.setInt(2, sc.nextInt());
+			JLabel numpromo = new JLabel("Rentrez le numero de la promo : ");
 			System.out.print("Rentrez le numero de la promo : ");
-			prepare.setInt(4, sc.nextInt());
+			//prepare.setInt(4, sc.nextInt());
+			JLabel numformateur = new JLabel("Rentrez le numero du formateur : ");
 			System.out.print("Rentrez le numero du formateur : ");
-			prepare.setInt(3, sc.nextInt());
+			//prepare.setInt(3, sc.nextInt());
+			JLabel numsalle = new JLabel("Rentrez le numéro de la salle : ");
 			System.out.print("Rentrez le numéro de la salle : ");
-			prepare.setInt(5, sc.nextInt());
-
+			//prepare.setInt(5, sc.nextInt());
+			resasalle.setVisible(true);
 			
 			//On execute la requete
 			prepare.execute();
