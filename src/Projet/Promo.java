@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Promo extends JFrame{
-	String nomPromo, description, text;
+	String nomPromo, description, text, infoEtud = "";
 	JLabel nbEtude2;
 	JLabel listeEtude;
 	int nbEtud;
@@ -109,7 +109,7 @@ public class Promo extends JFrame{
 				try {
 					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-					System.out.print("Rentrez le nom de la promo : ");
+					//System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
 					
 				
@@ -127,9 +127,11 @@ public class Promo extends JFrame{
 					d.printStackTrace();
 				}
 				
+				System.out.println(nbEtud);
+				
 				//***********LISTE ETUDIANT*************
 				
-				String query2 = "SELECT nomcompte, prenomcompte "
+				String query2 = "SELECT nomcompte, prenomcompte, logcompte "
 						+ "FROM public.etudiant, public.compte, public.promo "
 						+ "WHERE etudiant.idpromofk = promo.idpromo "
 						+ "AND etudiant.idcomptefk = compte.idcompte "
@@ -137,29 +139,30 @@ public class Promo extends JFrame{
 				try {
 					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query2, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-					System.out.print("Rentrez le nom de la promo : ");
+					//System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
 
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
 					  
-					if(result.first())
-					{
+					result.beforeFirst();
 					    while(result.next()){         
-					          for(int i = 2; i <= 3; i++)
-					            System.out.print(result.getObject(i).toString());
+					          for(int i = 1; i <= 3; i++){
+					            infoEtud = infoEtud + (result.getObject(i).toString() +" ");
 					              
-					          System.out.println("\n---------------------------------");
-
+					          	System.out.println("");
+					          }
+								System.out.print(infoEtud);
+								infoEtud = "";
 					        }
-					}
+
 					result.close();
 					
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-				System.out.println(nbEtud);
+				
 			}
 		});
 		
