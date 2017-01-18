@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Promo extends JFrame{
-	String nomPromo, description, text;
+	String nomPromo, description, text, infoEtude = "";
 	JLabel nbEtude2;
 	JLabel listeEtude;
 	int nbEtud;
@@ -109,7 +109,7 @@ public class Promo extends JFrame{
 				try {
 					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-					System.out.print("Rentrez le nom de la promo : ");
+					//System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
 
 
@@ -121,7 +121,7 @@ public class Promo extends JFrame{
 						nbEtude2 = new JLabel("" + nbEtud + " etudiant dans la promo");
 					}
 					result.close();
-
+					panRes.add(nbEtude2);
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
@@ -129,7 +129,7 @@ public class Promo extends JFrame{
 
 				//***********LISTE ETUDIANT*************
 
-				String query2 = "SELECT nomcompte, prenomcompte "
+				String query2 = "SELECT nomcompte, prenomcompte, logcompte "
 						+ "FROM public.etudiant, public.compte, public.promo "
 						+ "WHERE etudiant.idpromofk = promo.idpromo "
 						+ "AND etudiant.idcomptefk = compte.idcompte "
@@ -137,24 +137,23 @@ public class Promo extends JFrame{
 				try {
 					PreparedStatement prepare = Connexion.getInstance().prepareStatement(query2, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-					System.out.print("Rentrez le nom de la promo : ");
+					//System.out.print("Rentrez le nom de la promo : ");
 					prepare.setString(1, text);
 
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
-					if(result.first())
-					{
+					result.beforeFirst();
 						while(result.next()){         
-							for(int i = 2; i <= 3; i++)
-								System.out.print(result.getObject(i).toString());
-
-							System.out.println("\n---------------------------------");
-
-						}
-					}
-					result.close();
-
+							for(int i = 1; i <= 3; i++)
+								infoEtude = infoEtude + result.getObject(i).toString() + " ";
+								System.out.println("");
+								listeEtude = new JLabel(infoEtude);
+							}
+							panRes.add(listeEtude);
+							System.out.println(infoEtude);
+							result.close();
+							infoEtude = "";
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
