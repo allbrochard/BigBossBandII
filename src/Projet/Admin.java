@@ -44,7 +44,7 @@ public class Admin extends JFrame implements MouseListener{
 			JLabel age = new JLabel("Rentrez l'age"); 
 			System.out.print("Rentrez l'age : ");
 			//prepare.setInt(6, sc.nextInt());
-		
+			
 			crcompte.setVisible(true);
 			//On execute la requete
 			//prepare.execute();

@@ -8,7 +8,7 @@ public class Main {
 		//Graphique graph = new Graphique();
 	//	Reserver res = new Reserver();
 	//	Graphique graph = new Graphique();
-		
+		Planning plan= new Planning();
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
 		//FenetreAdmin JFrame = new FenetreAdmin();
 
