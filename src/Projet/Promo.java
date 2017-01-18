@@ -16,7 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Promo extends JFrame{
+
 	String nomPromo, description, text, infoEtude = "";
+
 	JLabel nbEtude2;
 	JLabel listeEtude;
 	int nbEtud;
@@ -127,7 +129,9 @@ public class Promo extends JFrame{
 					d.printStackTrace();
 				}
 
-				//***********LISTE ETUDIANT*************
+				
+				System.out.println(nbEtud);
+				
 
 				String query2 = "SELECT nomcompte, prenomcompte, logcompte "
 						+ "FROM public.etudiant, public.compte, public.promo "
@@ -142,6 +146,7 @@ public class Promo extends JFrame{
 
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
+
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
 					result.beforeFirst();
 						while(result.next()){         
@@ -154,6 +159,7 @@ public class Promo extends JFrame{
 							System.out.println(infoEtude);
 							result.close();
 							infoEtude = "";
+
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
