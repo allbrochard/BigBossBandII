@@ -148,7 +148,7 @@ public class Promo extends JFrame{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-				
+				System.out.println(nbEtud);
 			}
 		});
 		
