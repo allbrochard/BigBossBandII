@@ -16,7 +16,9 @@ public class Admin{
 	public boolean creeCompte(){
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;
-		String query = "INSERT INTO public.compte (nomcompte, prenomcompte, logcompte, pswdcompte, typecompte, agecompte) VALUES (?,?,?,?,?,?) RETURNING idcompte;";
+		String query = "INSERT INTO public.compte (nomcompte, prenomcompte, logcompte, pswdcompte, typecompte, agecompte) "
+				+ "VALUES (?,?,?,?,?,?) "
+				+ "RETURNING idcompte;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
@@ -56,7 +58,8 @@ public class Admin{
 	public void modifCompte(){
 		Scanner sc = new Scanner(System.in);
 		
-		String query = "UPDATE public.compte SET nomcompte = ?, prenomcompte = ?, logcompte = ?, pswdcompte = ?, typecompte = ?, agecompte = ? WHERE logcompte = ?;";
+		String query = "UPDATE public.compte SET nomcompte = ?, prenomcompte = ?, logcompte = ?, pswdcompte = ?, typecompte = ?, agecompte = ? "
+				+ "WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
@@ -90,7 +93,8 @@ public class Admin{
 	public void supprCompte(){
 		Scanner sc = new Scanner(System.in);
 		
-		String query = "DELETE FROM public.compte WHERE logcompte = ?;";
+		String query = "DELETE FROM public.compte "
+				+ "WHERE logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
