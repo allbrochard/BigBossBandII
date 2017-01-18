@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -103,6 +104,12 @@ public class Promo extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				JPanel resultat = new JPanel();
+				//setDefaultCloseOperation(EXIT_ON_CLOSE);
+				setSize(new Dimension(200, 500));
+				//setSize(new Dimension(800, 800));
+				resultat.setLayout(new BoxLayout(resultat,BoxLayout.PAGE_AXIS));
+				
 				text = tPromo.getText();
 				String query = "SELECT COUNT(*) AS nbetudiant "
 						+ "FROM public.etudiant, public.promo "
@@ -120,7 +127,7 @@ public class Promo extends JFrame{
 					if(result.first())
 					{
 						nbEtud = result.getInt(1);
-						nbEtude2 = new JLabel("" + nbEtud + " etudiant dans la promo");
+						nbEtude2 = new JLabel("" + nbEtud + " etudiant(s) dans la promo");
 					}
 					result.close();
 					panRes.add(nbEtude2);
@@ -149,25 +156,28 @@ public class Promo extends JFrame{
 
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
 					result.beforeFirst();
+					resultat.add(new JLabel("Nom  " + "Prenom  " + "Login  "));
+					resultat.add(new JLabel(" "));
 						while(result.next()){         
 							for(int i = 1; i <= 3; i++)
 								infoEtude = infoEtude + result.getObject(i).toString() + " ";
-								System.out.println("");
 								listeEtude = new JLabel(infoEtude);
+								infoEtude = "";
+								resultat.add(listeEtude);
 							}
-							panRes.add(listeEtude);
-							System.out.println(infoEtude);
+							resultat.add(listeEtude);
 							result.close();
-							infoEtude = "";
 
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
+				panRes.add(resultat);
+				resultat.setVisible(true);
 
 			}
 		});
-
+		
 		panRes.setVisible(true);
 		setVisible(true);
 
