@@ -31,6 +31,7 @@ public class Admin extends JFrame implements MouseListener{
 	//Méthode pour créer un compte (utilisable uniquement en mode admin)
 	public void creeCompte(){
 
+
 		JPanel adminPan = new JPanel();
 		JLabel nom = new JLabel("Rentrez le nom"); 
 		JLabel prenom = new JLabel("Rentrez le prenom");
@@ -127,6 +128,7 @@ public class Admin extends JFrame implements MouseListener{
 
 		this.setVisible(true);
 		adminPan.setVisible(true);
+
 	}
 
 	//Méthode pour modifier un compte (utilisable uniquement en mode admin)
@@ -139,6 +141,7 @@ public class Admin extends JFrame implements MouseListener{
 		setSize(new Dimension(250, 150));
 		setContentPane(adminPan);
 		Scanner sc = new Scanner(System.in);
+
 
 		JLabel login = new JLabel("LOGIN");
 
@@ -163,6 +166,7 @@ public class Admin extends JFrame implements MouseListener{
 
 
 		String query = "UPDATE public.compte SET nomcompte = ?, prenomcompte = ?, logcompte = ?, pswdcompte = ?, typecompte = ?, agecompte = ? WHERE logcompte = ?;";
+
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
@@ -205,6 +209,7 @@ public class Admin extends JFrame implements MouseListener{
 		setSize(new Dimension(250, 150));
 		setContentPane(suppCompte);
 		Scanner sc = new Scanner(System.in);
+
 
 		JLabel login = new JLabel("LOGIN");
 

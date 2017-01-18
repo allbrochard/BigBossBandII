@@ -6,14 +6,17 @@ public class Main {
 
 		//Admin adm = new Admin();
 
+
 		//Graphique graph = new Graphique();
 	//	Reserver res = new Reserver();
 	Graphique graph = new Graphique();
 		//Planning plan= new Planning();
 
 		
-		//Reserver res = new Reserver();
 
+		//Reserver res = new Reserver();
+		//Promo prom = new Promo();
+		//prom.integrerEtudiant();
 		
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
 		//FenetreAdmin JFrame = new FenetreAdmin();
@@ -34,6 +37,7 @@ public class Main {
 
 		//res.supprRes();
 		//res.modifResa();
+		
 		
 	}
 }
