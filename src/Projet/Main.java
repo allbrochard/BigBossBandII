@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		//Admin adm = new Admin();
-		//Graphique graph = new Graphique();
+		Graphique graph = new Graphique();
 		//Reserver res = new Reserver();
 
 		
@@ -17,6 +17,6 @@ public class Main {
 		//res.reserverSalle();
 		//res.supprRes();
 		//res.modifResa();
-
+		
 	}
 }
