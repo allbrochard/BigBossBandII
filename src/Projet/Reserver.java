@@ -12,19 +12,20 @@ public class Reserver {
 		
 		Scanner sc = new Scanner(System.in);
 		boolean res = false;
-		String query = "INSERT INTO public.reservation (dateresa, idmatierefk, idformateurfk, idpromofk, idsallefk, nomresa)"
+		String query = "INSERT INTO public.reservation (dateresa, idmatierefk, idcomptefk, idpromofk, idsallefk, nomresa)"
 				+ " VALUES (?,"
 				+ "(SELECT idmatiere FROM public.matiere WHERE idmatiere = ?),"
+				+ "(SELECT idcompte FROM public.compte WHERE idcompte = ?),"
 				+ "(SELECT idpromo FROM public.promo WHERE idpromo = ?),"
 				+ "(SELECT idsalle FROM public.salles WHERE idsalle = ?),"
-				+ "(SELECT idformateur FROM public.formateur WHERE idformateur = ?),?)"
+				+ "?)"
 				+ " RETURNING idresa;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			
 			System.out.print("Rentrez la date : ");
 			prepare.setString(1, sc.nextLine());
-			System.out.println("Rentrez le nom de la réservation : ");
+			System.out.print("Rentrez le nom de la réservation : ");
 			prepare.setString(6, sc.nextLine());
 			System.out.print("Rentrez le numero de la matiere : ");
 			prepare.setInt(2, sc.nextInt());
@@ -57,7 +58,8 @@ public class Reserver {
 	public void modifResa(){
 		Scanner sc = new Scanner(System.in);
 		
-		String query = "UPDATE public.reservation SET dateresa = ?, idmatierefk = ?, idformateurfk = ?, idpromofk = ?, idsallefk = ? WHERE nomresa = ?;";
+
+		String query = "UPDATE public.reservation SET dateresa = ?, idmatierefk = ?, idcomptefk = ?, idpromofk = ?, idsallefk = ? WHERE nomresa = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 			

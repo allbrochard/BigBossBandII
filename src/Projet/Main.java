@@ -7,7 +7,7 @@ public class Main {
 		//Admin adm = new Admin();
 		//Graphique graph = new Graphique();
 		//Reserver res = new Reserver();
-		Graphique graph = new Graphique();
+
 		
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
 		//FenetreAdmin JFrame = new FenetreAdmin();
@@ -15,6 +15,7 @@ public class Main {
 		//adm.modifCompte();
 		//adm.creeCompte();
 		//res.reserverSalle();
+		//res.supprRes();
 		//res.modifResa();
 
 	}
