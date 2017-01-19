@@ -185,17 +185,17 @@ public class PlanningPerso extends JFrame {
 
 			while(result.next()){
 			System.out.println("bonjour");
-			if(result.first()){
+			//if(result.first()){
 				jour = result.getString(1);
-				System.out.println(jour);
-			}
+				//System.out.println(jour);
+			//}
 			//jour = result.getString(1);
 			/**
 			 * permet de placer la reservation sur le bon jour dans le planning
 			 */
 				switch(jour){
 				case "Lundi":
-
+					
 					lab = new JLabel("");  
 						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
@@ -273,6 +273,7 @@ public class PlanningPerso extends JFrame {
 					break;
 				default:{	JOptionPane pope = new JOptionPane("attention");
 				pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
+				jour="";
 				}
 			}
 
