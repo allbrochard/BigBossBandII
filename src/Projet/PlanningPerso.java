@@ -39,10 +39,10 @@ public class PlanningPerso extends JFrame {
 
 	public PlanningPerso(){
 
-		setSize(800,600);
+		setSize(265,150);
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(" Planning ");
-		setResizable(true);
+		setResizable(false);
 		setLocationRelativeTo(null);
 
 		Color rouge = new Color(200,0,0);
@@ -59,6 +59,7 @@ public class PlanningPerso extends JFrame {
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 		
 		pan.setSize(new Dimension(800,600));
+		
 		semaine.setSize(new Dimension(800,600));
 		pan8.setSize(new Dimension(800,500));
 		pan.setLayout(new BoxLayout(pan,BoxLayout.PAGE_AXIS));
@@ -134,8 +135,7 @@ public class PlanningPerso extends JFrame {
 //		pan8.add(pan4);
 //		pan8.add(pan5);
 //		pan8.add(pan6);
-//		pan8.add(pan7);	
-//		pan.add(pan8);
+
 		pan.setVisible(true);
 		this.setContentPane(pan);
 		this.setVisible(true);
