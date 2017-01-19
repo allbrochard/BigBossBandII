@@ -13,7 +13,7 @@ public class Main {
 
 
 
-
+		System.out.println("lancer");
 		//Graphique graph = new Graphique();
 		//Reserver res = new Reserver();
 		//Graphique graph = new Graphique();
@@ -33,7 +33,7 @@ public class Main {
 		//adm.modifCompte();
 		//adm.creeCompte();
 		//res.reserverSalle();
-
+		
 //		res.modifResa();
 
 	

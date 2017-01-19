@@ -1,6 +1,7 @@
 package Projet;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,30 +89,34 @@ public class Promo extends JFrame{
 	public void afficheListeEtud(){
 		//***********NOMBRE ETUDIANT************	
 		JPanel panRes = new JPanel();
-		
-		
+		JPanel resultat = new JPanel();
+		//panRes.setLayout(new BoxLayout(panRes, BoxLayout.PAGE_AXIS));
 		
 		setLocationRelativeTo(null);
-		setSize(new Dimension(200, 300));
+		setSize(new Dimension(210, 300));
 		setContentPane(panRes);
 
 		JLabel promo = new JLabel("Rentrez le nom de la promo : ");
 		JTextField tPromo = new JTextField(15);
 		JButton valider = new JButton("valider");
 
+	
 		panRes.add(promo);
 		panRes.add(tPromo);
 		panRes.add(valider);
-
+		
+		
+		
 		valider.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				
-				JPanel resultat = new JPanel();
+				resultat.setBackground(Color.red);
 				resultat.setLayout(new BoxLayout(resultat,BoxLayout.PAGE_AXIS));
 				resultat.setSize(new Dimension(200, 500));
+			
 				
 				text = tPromo.getText();
 				String query = "SELECT COUNT(*) AS nbetudiant "
@@ -133,13 +138,13 @@ public class Promo extends JFrame{
 						nbEtude2 = new JLabel("" + nbEtud + " etudiant(s) dans la promo");
 					}
 					result.close();
-					panRes.add(nbEtude2);
+					
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
 
-				
+				resultat.add(nbEtude2);
 				System.out.println(nbEtud);
 				
 
@@ -158,7 +163,7 @@ public class Promo extends JFrame{
 					ResultSet result = prepare.getResultSet();
 
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
-					result.beforeFirst();
+					//result.beforeFirst();
 
 					resultat.add(new JLabel("Nom  " + "Prenom  " + "Login  "));
 					resultat.add(new JLabel(" "));
@@ -168,9 +173,10 @@ public class Promo extends JFrame{
 								infoEtude = infoEtude + result.getObject(i).toString() + " ";
 								listeEtude = new JLabel(infoEtude);
 								infoEtude = "";
+								System.out.println("");
 								resultat.add(listeEtude);
 						}
-							resultat.add(listeEtude);
+							//resultat.add(listeEtude);
 
 							result.close();
 
@@ -178,13 +184,17 @@ public class Promo extends JFrame{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-				panRes.add(resultat);
+				
+				resultat.validate();
 				resultat.setVisible(true);
+				
+				
 
 			}
 			
 		});
 		
+		panRes.add(resultat);
 		panRes.setVisible(true);
 		setVisible(true);
 

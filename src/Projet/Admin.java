@@ -123,7 +123,12 @@ public class Admin extends JFrame implements MouseListener{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-
+				tNom.setText("");
+				tPrenom.setText(""); 
+				tLogin.setText(""); 
+				tMdp.setText(""); 
+				tTypeCompte.setText(""); 
+				tAge.setText("");
 			}
 		});
 
@@ -203,7 +208,7 @@ public class Admin extends JFrame implements MouseListener{
 					
 					prepare.setInt(6, Integer.parseInt(tAge.getText()));
 					//sc.nextLine();
-
+					
 
 					prepare.execute();
 				}
@@ -212,7 +217,14 @@ public class Admin extends JFrame implements MouseListener{
 				}
 
 				System.out.println("Le compte a bien été mis à jour !");
-
+				tLog.setText("");
+				tNom.setText("");
+				tPrenom.setText("");
+				tLogin.setText("");
+				tMdp.setText("");
+				tTypeCompte.setText("");
+				tAge.setText("");
+				
 			}
 		});
 
@@ -266,6 +278,7 @@ public class Admin extends JFrame implements MouseListener{
 					d.printStackTrace();
 				}
 				System.out.println("Le compte a bien été supprimé");
+				txuser.setText("");
 			}
 		});
 

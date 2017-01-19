@@ -108,6 +108,12 @@ public class Reserver extends JFrame{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
+				tnomresa.setText("");
+				tdate.setText("");
+				tnumformateur.setText("");
+				tnummatiere.setText("");
+				tnumpromo.setText("");
+				tnumsalle.setText("");
 				
 			}
 		});
@@ -185,7 +191,12 @@ public class Reserver extends JFrame{
 				}
 
 				System.out.println("Le compte a bien été mis à jour !");
-				
+				tnomresa.setText("");
+				tdateresa.setText("");
+				tnumformateur.setText("");
+				tnummatiere.setText("");
+				tnumpromo.setText("");
+				tnumsalle.setText("");
 			}
 		});
 		  
@@ -228,6 +239,7 @@ public class Reserver extends JFrame{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
+				tnomResa.setText("");
 			}
 		});
 
