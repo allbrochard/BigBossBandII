@@ -161,7 +161,7 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0){
-			graph.Graphique();
+			graph = new Graphique();
 		
 			}
 		
