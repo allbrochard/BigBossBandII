@@ -3,6 +3,7 @@ package Projet;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,6 +53,7 @@ public class PlanningPerso extends JFrame {
 		pan7.setLayout(new BoxLayout(pan7,BoxLayout.LINE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 		
+		semaine.setSize(new Dimension(800 ,100));
 		
 		pan.setLayout(new BoxLayout(pan,BoxLayout.PAGE_AXIS));
 	/**
