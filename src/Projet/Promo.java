@@ -90,9 +90,10 @@ public class Promo extends JFrame{
 
 	public void afficheListeEtud(){
 		//***********NOMBRE ETUDIANT************	
+		
 		JPanel panRes = new JPanel();
 		JPanel resultat = new JPanel();
-		//panRes.setLayout(new BoxLayout(panRes, BoxLayout.PAGE_AXIS));
+
 		
 		setLocationRelativeTo(null);
 		setSize(new Dimension(210, 300));
@@ -102,24 +103,18 @@ public class Promo extends JFrame{
 		JTextField tPromo = new JTextField(15);
 		JButton valider = new JButton("valider");
 
-	
 		panRes.add(promo);
 		panRes.add(tPromo);
 		panRes.add(valider);
-		
-		
-		
+
 		valider.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				
-				
-				resultat.setLayout(new BoxLayout(resultat,BoxLayout.PAGE_AXIS));
-				resultat.setSize(new Dimension(200, 500));
+			resultat.setLayout(new BoxLayout(resultat, BoxLayout.PAGE_AXIS));
+			resultat.setSize(200, 500);
 			
-				
 				text = tPromo.getText();
 				String query = "SELECT COUNT(*) AS nbetudiant "
 						+ "FROM public.etudiant, public.promo "
@@ -140,13 +135,14 @@ public class Promo extends JFrame{
 						nbEtude2 = new JLabel("" + nbEtud + " etudiant(s) dans la promo");
 					}
 					result.close();
-					
+
+					resultat.add(nbEtude2);
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
 
-				resultat.add(nbEtude2);
+			
 				System.out.println(nbEtud);
 				
 
@@ -166,20 +162,24 @@ public class Promo extends JFrame{
 
 					
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
-					//result.beforeFirst();
 
 					resultat.add(new JLabel("Nom  " + "Prenom  " + "Login  "));
 					resultat.add(new JLabel(" "));
+					
 
 						while(result.next()){         
 							for(int i = 1; i <= 3; i++)
 								infoEtude = infoEtude + result.getObject(i).toString() + " ";
 								listeEtude = new JLabel(infoEtude);
+								System.out.println(infoEtude);
 								infoEtude = "";
-								System.out.println("");
+
+								System.out.println("test");
+
 								resultat.add(listeEtude);
+
 						}
-							//resultat.add(listeEtude);
+						
 
 							result.close();
 
@@ -190,13 +190,12 @@ public class Promo extends JFrame{
 				
 				resultat.validate();
 				resultat.setVisible(true);
-				
-				
-				tPromo.setText("");
+			tPromo.setText("");
+
 			}
 			
 		});
-		
+
 		panRes.add(resultat);
 		panRes.setVisible(true);
 		setVisible(true);
