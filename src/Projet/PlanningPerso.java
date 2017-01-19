@@ -46,15 +46,15 @@ public class PlanningPerso extends JFrame {
 		Color vert = new Color(0,150,20);
 
 		semaine.setLayout(new BoxLayout(semaine,BoxLayout.LINE_AXIS));
-		pan3.setLayout(new BoxLayout(pan3,BoxLayout.LINE_AXIS));
-		pan4.setLayout(new BoxLayout(pan4,BoxLayout.LINE_AXIS));
-		pan5.setLayout(new BoxLayout(pan5,BoxLayout.LINE_AXIS));
-		pan6.setLayout(new BoxLayout(pan6,BoxLayout.LINE_AXIS));
-		pan7.setLayout(new BoxLayout(pan7,BoxLayout.LINE_AXIS));
+		pan3.setLayout(new BoxLayout(pan3,BoxLayout.PAGE_AXIS));
+		pan4.setLayout(new BoxLayout(pan4,BoxLayout.PAGE_AXIS));
+		pan5.setLayout(new BoxLayout(pan5,BoxLayout.PAGE_AXIS));
+		pan6.setLayout(new BoxLayout(pan6,BoxLayout.PAGE_AXIS));
+		pan7.setLayout(new BoxLayout(pan7,BoxLayout.PAGE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 
 		semaine.setSize(new Dimension(800 ,100));
-
+		pan8.setSize(new Dimension(800, 500));
 		pan.setLayout(new BoxLayout(pan,BoxLayout.PAGE_AXIS));
 		/**
 //		JOptionPane jop = new JOptionPane("boom");
@@ -126,13 +126,13 @@ public class PlanningPerso extends JFrame {
 		checkPlan();
 
 		pan.add(semaine);
-		pan.add(pan8);
+		
 		pan8.add(pan3);
 		pan8.add(pan4);
 		pan8.add(pan5);
 		pan8.add(pan6);
 		pan8.add(pan7);
-
+		pan.add(pan8);
 		pan.setVisible(true);
 		this.setContentPane(pan);
 		this.setVisible(true);
