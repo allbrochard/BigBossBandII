@@ -96,7 +96,7 @@ public class PlanningPerso extends JFrame {
 
 		lundi = new JPanel();
 		JLabel lundi1 = new JLabel("Lundi");
-		lundi.setBackground(white);
+		//lundi.setBackground(white);
 		lundi.add(lundi1);
 		semaine.add(lundi);
 
@@ -111,7 +111,7 @@ public class PlanningPerso extends JFrame {
 
 		mercredi = new JPanel();
 		JLabel mercredi1= new JLabel("Mercredi");
-		mercredi.setBackground(white);
+		//mercredi.setBackground(white);
 		mercredi.add(mercredi1);
 		semaine.add(mercredi);
 
@@ -125,7 +125,7 @@ public class PlanningPerso extends JFrame {
 
 		vendredi = new JPanel();
 		JLabel vendredi1= new JLabel("Vendredi");
-		vendredi.setBackground(white);
+		//vendredi.setBackground(white);
 		vendredi.add(vendredi1);
 		semaine.add(vendredi);
 
