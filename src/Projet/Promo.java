@@ -190,7 +190,7 @@ public class Promo extends JFrame{
 				
 				resultat.validate();
 				resultat.setVisible(true);
-			tPromo.setText("");
+				tPromo.setText("");
 
 			}
 			
@@ -198,6 +198,7 @@ public class Promo extends JFrame{
 
 		panRes.add(resultat);
 		panRes.setVisible(true);
+		panRes.revalidate();
 		setVisible(true);
 
 	}

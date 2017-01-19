@@ -180,7 +180,7 @@ public class PlanningPerso extends JFrame {
 
 	public void ckeckPlan(){
 
-		String query = "SELECT DISTINCT dateresa AS Date, nomcompte AS Professeur, nommatiere as Matiere, nompromo AS Promo, idsallefk AS Salle "
+		String query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
 				+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
 				+ "WHERE reservation.idcomptefk = compte.idcompte "
 				+ "AND reservation.idmatierefk = matiere.idmatiere "
@@ -188,10 +188,24 @@ public class PlanningPerso extends JFrame {
 				+ "AND logcompte = ?;";
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			
 
 			prepare.setString(1, Graphique.loginCompte);
-
 			prepare.execute();
+			
+			ResultSet result = prepare.getResultSet();
+			while(result.next()){         
+				for(int i = 1; i <= 5; i++)
+					infoEtude = infoEtude + result.getObject(i).toString() + " ";
+					listeEtude = new JLabel(infoEtude);
+					System.out.println(infoEtude);
+					infoEtude = "";
+
+					System.out.println("test");
+
+					resultat.add(listeEtude);
+
+			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
