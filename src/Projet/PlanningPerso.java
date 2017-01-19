@@ -53,8 +53,8 @@ public class PlanningPerso extends JFrame {
 		pan7.setLayout(new BoxLayout(pan7,BoxLayout.PAGE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 
-		semaine.setSize(new Dimension(800 ,100));
-		pan8.setSize(new Dimension(800, 500));
+		semaine.setSize(new Dimension(800,100));
+		pan8.setSize(new Dimension(800,500));
 		pan.setLayout(new BoxLayout(pan,BoxLayout.PAGE_AXIS));
 		/**
 //		JOptionPane jop = new JOptionPane("boom");
