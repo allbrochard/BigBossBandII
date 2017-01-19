@@ -125,8 +125,8 @@ public class PlanningPerso extends JFrame {
 		
 		checkPlan();
 		
-		pan.add(semaine, BorderLayout.NORTH);
-		pan.add(pan8,BorderLayout.CENTER);
+		pan.add(semaine);
+		pan.add(pan8);
 		pan8.add(pan3);
 		pan8.add(pan4);
 		pan8.add(pan5);
