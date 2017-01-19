@@ -51,11 +51,11 @@ public class PlanningPerso extends JFrame {
 		Color vert = new Color(0,150,20);
 
 		semaine.setLayout(new BoxLayout(semaine,BoxLayout.LINE_AXIS));
-		pan3.setLayout(new BoxLayout(pan3,BoxLayout.PAGE_AXIS));
-		pan4.setLayout(new BoxLayout(pan4,BoxLayout.PAGE_AXIS));
-		pan5.setLayout(new BoxLayout(pan5,BoxLayout.PAGE_AXIS));
-		pan6.setLayout(new BoxLayout(pan6,BoxLayout.PAGE_AXIS));
-		pan7.setLayout(new BoxLayout(pan7,BoxLayout.PAGE_AXIS));
+		lundi.setLayout(new BoxLayout(pan3,BoxLayout.PAGE_AXIS));
+		mardi.setLayout(new BoxLayout(pan4,BoxLayout.PAGE_AXIS));
+		mercredi.setLayout(new BoxLayout(pan5,BoxLayout.PAGE_AXIS));
+		jeudi.setLayout(new BoxLayout(pan6,BoxLayout.PAGE_AXIS));
+		vendredi.setLayout(new BoxLayout(pan7,BoxLayout.PAGE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 
 		semaine.setSize(new Dimension(800,100));
@@ -96,6 +96,7 @@ public class PlanningPerso extends JFrame {
 
 		lundi = new JPanel();
 		JLabel lundi1 = new JLabel("Lundi");
+		//lundi.setBackground(white);
 		lundi.add(lundi1);
 		semaine.add(lundi);
 
@@ -110,7 +111,7 @@ public class PlanningPerso extends JFrame {
 
 		mercredi = new JPanel();
 		JLabel mercredi1= new JLabel("Mercredi");
-		mercredi.setBackground(white);
+		//mercredi.setBackground(white);
 		mercredi.add(mercredi1);
 		semaine.add(mercredi);
 
@@ -124,7 +125,7 @@ public class PlanningPerso extends JFrame {
 
 		vendredi = new JPanel();
 		JLabel vendredi1= new JLabel("Vendredi");
-		vendredi.setBackground(white);
+		//vendredi.setBackground(white);
 		vendredi.add(vendredi1);
 		semaine.add(vendredi);
 
@@ -132,11 +133,11 @@ public class PlanningPerso extends JFrame {
 
 		pan.add(semaine);
 		
-		pan8.add(pan3);
-		pan8.add(pan4);
-		pan8.add(pan5);
-		pan8.add(pan6);
-		pan8.add(pan7);
+//		pan8.add(pan3);
+//		pan8.add(pan4);
+//		pan8.add(pan5);
+//		pan8.add(pan6);
+//		pan8.add(pan7);
 		pan.add(pan8);
 		pan.setVisible(true);
 		this.setContentPane(pan);
