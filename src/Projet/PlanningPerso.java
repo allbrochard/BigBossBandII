@@ -53,8 +53,8 @@ public class PlanningPerso extends JFrame {
 		pan7.setLayout(new BoxLayout(pan7,BoxLayout.PAGE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 
-		semaine.setSize(new Dimension(800 ,100));
-		pan8.setSize(new Dimension(800, 500));
+		semaine.setSize(new Dimension(800,100));
+		pan8.setSize(new Dimension(800,500));
 		pan.setLayout(new BoxLayout(pan,BoxLayout.PAGE_AXIS));
 		/**
 //		JOptionPane jop = new JOptionPane("boom");
@@ -185,17 +185,17 @@ public class PlanningPerso extends JFrame {
 
 			while(result.next()){
 			System.out.println("bonjour");
-			if(result.first()){
+			//if(result.first()){
 				jour = result.getString(1);
-				System.out.println(jour);
-			}
+				//System.out.println(jour);
+			//}
 			//jour = result.getString(1);
 			/**
 			 * permet de placer la reservation sur le bon jour dans le planning
 			 */
 				switch(jour){
 				case "Lundi":
-
+					
 					lab = new JLabel("");  
 						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
@@ -273,6 +273,7 @@ public class PlanningPerso extends JFrame {
 					break;
 				default:{	JOptionPane pope = new JOptionPane("attention");
 				pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
+				jour="";
 				}
 			}
 
