@@ -164,6 +164,7 @@ public class Promo extends JFrame{
 					prepare.execute();
 					ResultSet result = prepare.getResultSet();
 
+					
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
 					//result.beforeFirst();
 
