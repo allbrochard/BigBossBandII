@@ -51,11 +51,11 @@ public class Reserver extends JFrame{
 		resaSalle.add(numpromo);
 		resaSalle.add(tnumpromo);
 		
-		resaSalle.add(numsalle);
-		resaSalle.add(tnumsalle);
-		
 		resaSalle.add(numformateur);
 		resaSalle.add(tnumformateur);
+		
+		resaSalle.add(numsalle);
+		resaSalle.add(tnumsalle);
 		
 		resaSalle.add(valider);
 		
@@ -89,9 +89,9 @@ public class Reserver extends JFrame{
 					System.out.print("Rentrez le numero de la promo : ");
 					prepare.setInt(4, Integer.parseInt(tnumpromo.getText()));
 					System.out.print("Rentrez le numero du formateur : ");
-					prepare.setInt(3, Integer.parseInt(tnumsalle.getText()));
+					prepare.setInt(5, Integer.parseInt(tnumsalle.getText()));
 					System.out.print("Rentrez le numéro de la salle : ");
-					prepare.setInt(5, Integer.parseInt(tnumformateur.getText()));
+					prepare.setInt(3, Integer.parseInt(tnumformateur.getText()));
 					
 
 					//On execute la requete
