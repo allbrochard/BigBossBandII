@@ -38,7 +38,6 @@ import Projet.Graphique;
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					PlanningPerso plan = new PlanningPerso();
-					plan.checkPlan();
 				}
 			});
 			PlanningPerso.add(Planningsemaine);
