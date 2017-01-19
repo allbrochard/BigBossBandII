@@ -140,23 +140,44 @@ public class PlanningPerso extends JFrame {
 
 
 	public void checkPlan(){
+		String query;
 
-		String query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
-				+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
-				+ "WHERE reservation.idcomptefk = compte.idcompte "
-				+ "AND reservation.idmatierefk = matiere.idmatiere "
-				+ "AND reservation.idpromofk = promo.idpromo "
-				+ "AND logcompte = ?;";
+		//pour les ETUDIANT!!!!!
+		
+		if(Graphique.typeCompte.equals("etudiant")){
+			query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
+					+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
+					+ "WHERE reservation.idcomptefk = compte.idcompte "
+					+ "AND reservation.idmatierefk = matiere.idmatiere "
+					+ "AND reservation.idpromofk = promo.idpromo "
+					+ "AND nompromo = ?;";
+	}
+		//Pour les prof !!!!
+		//(Graphique.typeCompte.equals("formateur"))
+		else{
+			query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
+					+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
+					+ "WHERE reservation.idcomptefk = compte.idcompte "
+					+ "AND reservation.idmatierefk = matiere.idmatiere "
+					+ "AND reservation.idpromofk = promo.idpromo "
+					+ "AND logcompte = ?;";
+	}
 		
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
 
 			//Pour les prof !!!!
-			prepare.setString(1, Graphique.loginCompte);
 			
+			if(Graphique.typeCompte.equals("formateur")){
+			prepare.setString(1, Graphique.loginCompte);
+		}
 			//pour les ETUDIANT!!!!!
+			if(Graphique.typeCompte.equals("etudiant")){
 			prepare.setString(1, Graphique.nomPromo);
+		}
+			
+			
 			prepare.execute();
 
 			ResultSet result = prepare.getResultSet();
@@ -169,7 +190,9 @@ public class PlanningPerso extends JFrame {
 				System.out.println(jour);
 			}
 			//jour = result.getString(1);
-			
+			/**
+			 * permet de placer la reservation sur le bon jour dans le planning
+			 */
 				switch(jour){
 				case "Lundi":
 
@@ -259,6 +282,7 @@ public class PlanningPerso extends JFrame {
 		}
 	}
 
+ 
 	//	public void parcourirTable(PreparedStatement prepare, JLabel lab, JPanel pan){
 	//		
 	//		ResultSet result = prepare.getResultSet();
