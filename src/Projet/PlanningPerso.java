@@ -156,12 +156,14 @@ public class PlanningPerso extends JFrame {
 
 			ResultSet result = prepare.getResultSet();
 
-			result.beforeFirst();
+			result.first();
 
 			if(result.first()){
 				jour = result.getString(1);
+				System.out.println(jour);
 			}
-			while(result.next()){
+			jour = result.getString("dateresa");
+			              
 				switch(jour){
 				case "Lundi":
 					lab = new JLabel("");
@@ -243,7 +245,7 @@ public class PlanningPerso extends JFrame {
 				}
 
 
-			}
+			
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
