@@ -13,13 +13,16 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
+import com.sun.corba.se.impl.orbutil.graph.Graph;
+
 import Projet.Graphique;
 
 public class FenetreAdmin extends JFrame implements MouseListener{
 	Promo prom = new Promo();
 	Admin adm = new Admin();
 	Reserver res = new Reserver();
-	
+	Graphique graph = new Graphique();
 	public FenetreAdmin(){
 		
 		setSize(800, 600);
@@ -152,6 +155,18 @@ public class FenetreAdmin extends JFrame implements MouseListener{
 		});
 		etudiant.add(listeEtudiant);
 		
+		JButton deco = new JButton ("Deconnexion");
+		bar.add(deco);
+		deco.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0){
+			graph.Graphique();
+		
+			}
+		
+			
+		});
 		//*****************MENU PROMO***************************
 		
 //		JMenu promo = new JMenu("Promo");
