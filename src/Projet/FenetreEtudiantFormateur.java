@@ -44,7 +44,8 @@ import Projet.Graphique;
 			JMenuItem PlanningMois = new JMenuItem("Planning Mois");
 			PlanningPerso.add(PlanningMois);
 			plan.setVisible(true);
-			this.setContentPane(plan);
+			pan1.add(plan);
+			this.setContentPane(pan1);
 			this.setVisible(true);
 		}
 
