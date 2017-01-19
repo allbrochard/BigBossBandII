@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 
 public class PlanningPerso extends JFrame {
 
+	String jour;
 	public PlanningPerso(){
 
 		setSize(800,600);
@@ -180,7 +181,7 @@ public class PlanningPerso extends JFrame {
 
 	public void ckeckPlan(){
 
-		String query = "SELECT DISTINCT dateresa AS Date, nomcompte AS Professeur, nommatiere as Matiere, nompromo AS Promo, idsallefk AS Salle "
+		String query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
 				+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
 				+ "WHERE reservation.idcomptefk = compte.idcompte "
 				+ "AND reservation.idmatierefk = matiere.idmatiere "
@@ -190,11 +191,53 @@ public class PlanningPerso extends JFrame {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
 			prepare.setString(1, Graphique.loginCompte);
-
 			prepare.execute();
+			
+			ResultSet result = prepare.getResultSet();
+			jour = result.getObject(1).toString();
+			selectionDay(jour, prepare);
+			
+
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public void parcourirTable(PreparedStatement prepare){
+		
+		ResultSet result = prepare.getResultSet();
+		while(result.next()){         
+			for(int i = 1; i <= 5; i++)
+				infoEtude = infoEtude + result.getObject(i).toString() + " ";
+				listeEtude = new JLabel(infoEtude);
+				System.out.println(infoEtude);
+				infoEtude = "";
+
+				System.out.println("test");
+
+				resultat.add(listeEtude);
+
+		}
+	}
+	public void selectionDay(String a, PreparedStatement prepare){
+		switch(a){
+		case "Lundi":
+			parcourirTable(prepare);
+			break;
+		case "Mardi":
+			parcourirTable(prepare);
+			break;
+		case "Mercredi":
+			parcourirTable(prepare);
+			break;
+		case "Jeudi":
+			parcourirTable(prepare);
+			break;
+		case "Vendredi":
+			parcourirTable(prepare);
+			break;
+			default:{	JOptionPane pope = new JOptionPane("attention");
+			pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
+	}
 	}
 }
