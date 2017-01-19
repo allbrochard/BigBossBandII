@@ -156,17 +156,19 @@ public class PlanningPerso extends JFrame {
 
 			ResultSet result = prepare.getResultSet();
 
-			result.first();
-
+			while(result.next()){
+			
 			if(result.first()){
 				jour = result.getString(1);
 				System.out.println(jour);
 			}
-			jour = result.getString("dateresa");
-			              
+			//jour = result.getString(1);
+			
 				switch(jour){
 				case "Lundi":
 					lab = new JLabel("");
+					result.first();
+
 					while(result.next()){         
 						for(int i = 2; i <= 5; i++)
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
@@ -181,6 +183,8 @@ public class PlanningPerso extends JFrame {
 					}
 					break;
 				case "Mardi":
+					result.first();
+
 					lab = new JLabel("");
 					while(result.next()){         
 						for(int i = 2; i <= 5; i++)
@@ -196,6 +200,8 @@ public class PlanningPerso extends JFrame {
 					}
 					break;
 				case "Mercredi":
+					result.first();
+
 					lab = new JLabel("");
 					while(result.next()){         
 						for(int i = 2; i <= 5; i++)
@@ -211,6 +217,8 @@ public class PlanningPerso extends JFrame {
 					}
 					break;
 				case "Jeudi":
+					result.first();
+
 					lab = new JLabel("");
 					while(result.next()){         
 						for(int i = 2; i <= 5; i++)
@@ -226,6 +234,8 @@ public class PlanningPerso extends JFrame {
 					}
 					break;
 				case "Vendredi":
+					result.first();
+
 					lab = new JLabel("");
 					while(result.next()){         
 						for(int i = 2; i <= 5; i++)
@@ -243,9 +253,8 @@ public class PlanningPerso extends JFrame {
 				default:{	JOptionPane pope = new JOptionPane("attention");
 				pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
 				}
+			}
 
-
-			
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -349,4 +358,5 @@ public class PlanningPerso extends JFrame {
 	//			pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
 	//	}
 	//	}
+
 }
