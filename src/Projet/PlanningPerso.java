@@ -30,11 +30,11 @@ public class PlanningPerso extends JFrame {
 	JPanel pan7 = new JPanel();
 	JPanel pan8 = new JPanel();
 	JLabel lab = new JLabel();
-	
+
 	public PlanningPerso(){
 
 		setSize(800,600);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle(" Planning ");
 		setResizable(true);
 		setLocationRelativeTo(null);
@@ -43,7 +43,7 @@ public class PlanningPerso extends JFrame {
 		Color white = new Color(219,219,219);
 		Color bleu = new Color(0,110,212);
 		Color vert = new Color(0,150,20);
-		
+
 		semaine.setLayout(new BoxLayout(semaine,BoxLayout.LINE_AXIS));
 		pan3.setLayout(new BoxLayout(pan3,BoxLayout.LINE_AXIS));
 		pan4.setLayout(new BoxLayout(pan4,BoxLayout.LINE_AXIS));
@@ -51,11 +51,11 @@ public class PlanningPerso extends JFrame {
 		pan6.setLayout(new BoxLayout(pan6,BoxLayout.LINE_AXIS));
 		pan7.setLayout(new BoxLayout(pan7,BoxLayout.LINE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
-		
+
 		semaine.setSize(new Dimension(800 ,100));
-		
+
 		pan.setLayout(new BoxLayout(pan,BoxLayout.PAGE_AXIS));
-	/**
+		/**
 //		JOptionPane jop = new JOptionPane("boom");
 //		jop.showMessageDialog(null,"Bienvenu numero 2","haut + bas + gauche + droite + bas + start",JOptionPane.INFORMATION_MESSAGE);
 //		JOptionPane jop3 = new JOptionPane("boom");
@@ -78,8 +78,8 @@ public class PlanningPerso extends JFrame {
 //		
 //		bar.setLayout(new FlowLayout());
 
-		**/
-	
+		 **/
+
 		semaine.setBorder(null);
 		JPanel logo = new JPanel();
 		JLabel logo1 = new JLabel(new ImageIcon("C:/Users/Flo/Downloads/umbrella.jpg"));
@@ -87,50 +87,52 @@ public class PlanningPerso extends JFrame {
 		logo.setBackground(white);
 		logo.add(logo1);
 		semaine.add(logo);
-	
+
 		JPanel lundi = new JPanel();
 		JLabel lundi1 = new JLabel("Lundi");
 		lundi.add(lundi1);
 		semaine.add(lundi);
-	
-		
+
+
 		JPanel mardi = new JPanel();
 		JLabel mardi1= new JLabel("Mardi");
 		mardi.setBackground(white);
 		mardi.add(mardi1);
 		semaine.add(mardi);
 
-		
-		
+
+
 		JPanel mercredi = new JPanel();
 		JLabel mercredi1= new JLabel("Mercredi");
 		mercredi.setBackground(white);
 		mercredi.add(mercredi1);
 		semaine.add(mercredi);
-	
-		
+
+
 		JPanel jeudi = new JPanel();
 		JLabel jeudi1= new JLabel("Jeudi");
 		jeudi.setBackground(white);
 		jeudi.add(jeudi1);
 		semaine.add(jeudi);
-	
-		
+
+
 		JPanel vendredi = new JPanel();
 		JLabel vendredi1= new JLabel("Vendredi");
 		vendredi.setBackground(white);
 		vendredi.add(vendredi1);
 		semaine.add(vendredi);
-		
+
 		checkPlan();
-		
-		pan.add(semaine, BorderLayout.NORTH);
-		pan.add(pan8,BorderLayout.CENTER);
+
+		pan.add(semaine);
+		pan.add(pan8);
 		pan8.add(pan3);
 		pan8.add(pan4);
 		pan8.add(pan5);
 		pan8.add(pan6);
 		pan8.add(pan7);
+
+		pan.setVisible(true);
 		this.setContentPane(pan);
 		this.setVisible(true);
 	}
@@ -149,17 +151,24 @@ public class PlanningPerso extends JFrame {
 
 			prepare.setString(1, Graphique.loginCompte);
 			prepare.execute();
-			
+
 			ResultSet result = prepare.getResultSet();
+
+			while(result.next()){
 			
-			jour = result.getObject(1).toString();
+			if(result.first()){
+				jour = result.getString(1);
+				System.out.println(jour);
+			}
+			//jour = result.getString(1);
 			
-			switch(jour){
-			case "Lundi":
-				lab = new JLabel("");
-				while(result.next()){         
-					for(int i = 1; i <= 5; i++)
-						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+				switch(jour){
+				case "Lundi":
+					lab = new JLabel("");
+					result.first();
+					while(result.next()){         
+						for(int i = 2; i <= 5; i++)
+							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
@@ -168,13 +177,14 @@ public class PlanningPerso extends JFrame {
 
 						pan3.add(lab);
 
-				}
-				break;
-			case "Mardi":
-				lab = new JLabel("");
-				while(result.next()){         
-					for(int i = 1; i <= 5; i++)
-						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+					}
+					break;
+				case "Mardi":
+					result.first();
+					lab = new JLabel("");
+					while(result.next()){         
+						for(int i = 2; i <= 5; i++)
+							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
@@ -183,13 +193,14 @@ public class PlanningPerso extends JFrame {
 
 						pan4.add(lab);
 
-				}
-				break;
-			case "Mercredi":
-				lab = new JLabel("");
-				while(result.next()){         
-					for(int i = 1; i <= 5; i++)
-						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+					}
+					break;
+				case "Mercredi":
+					result.first();
+					lab = new JLabel("");
+					while(result.next()){         
+						for(int i = 2; i <= 5; i++)
+							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
@@ -198,13 +209,14 @@ public class PlanningPerso extends JFrame {
 
 						pan5.add(lab);
 
-				}
-				break;
-			case "Jeudi":
-				lab = new JLabel("");
-				while(result.next()){         
-					for(int i = 1; i <= 5; i++)
-						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+					}
+					break;
+				case "Jeudi":
+					result.first();
+					lab = new JLabel("");
+					while(result.next()){         
+						for(int i = 2; i <= 5; i++)
+							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
@@ -213,13 +225,14 @@ public class PlanningPerso extends JFrame {
 
 						pan6.add(lab);
 
-				}
-				break;
-			case "Vendredi":
-				lab = new JLabel("");
-				while(result.next()){         
-					for(int i = 1; i <= 5; i++)
-						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+					}
+					break;
+				case "Vendredi":
+					result.first();
+					lab = new JLabel("");
+					while(result.next()){         
+						for(int i = 2; i <= 5; i++)
+							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
@@ -228,13 +241,13 @@ public class PlanningPerso extends JFrame {
 
 						pan7.add(lab);
 
-				}
-				break;
+					}
+					break;
 				default:{	JOptionPane pope = new JOptionPane("attention");
 				pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
-		}
+				}
 			
-
+			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -242,84 +255,84 @@ public class PlanningPerso extends JFrame {
 	}
 
 	public void selectionDay(String a, PreparedStatement prepare){
-//		switch(a){
-//		case "Lundi":
-//			ResultSet result = prepare.getResultSet();
-//			while(result.next()){         
-//				for(int i = 1; i <= 5; i++)
-//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
-//					lab = new JLabel(infoPlan);
-//					System.out.println(infoPlan);
-//					infoPlan = "";
-//
-//					System.out.println("test");
-//
-//					pan.add(lab);
-//
-//			}
-//			break;
-//		case "Mardi":
-//			ResultSet result = prepare.getResultSet();
-//			while(result.next()){         
-//				for(int i = 1; i <= 5; i++)
-//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
-//					lab = new JLabel(infoPlan);
-//					System.out.println(infoPlan);
-//					infoPlan = "";
-//
-//					System.out.println("test");
-//
-//					pan.add(lab);
-//
-//			}
-//			break;
-//		case "Mercredi":
-//			ResultSet result = prepare.getResultSet();
-//			while(result.next()){         
-//				for(int i = 1; i <= 5; i++)
-//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
-//					lab = new JLabel(infoPlan);
-//					System.out.println(infoPlan);
-//					infoPlan = "";
-//
-//					System.out.println("test");
-//
-//					pan.add(lab);
-//
-//			}
-//			break;
-//		case "Jeudi":
-//			ResultSet result = prepare.getResultSet();
-//			while(result.next()){         
-//				for(int i = 1; i <= 5; i++)
-//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
-//					lab = new JLabel(infoPlan);
-//					System.out.println(infoPlan);
-//					infoPlan = "";
-//
-//					System.out.println("test");
-//
-//					pan.add(lab);
-//
-//			}
-//			break;
-//		case "Vendredi":
-//			ResultSet result = prepare.getResultSet();
-//			while(result.next()){         
-//				for(int i = 1; i <= 5; i++)
-//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
-//					lab = new JLabel(infoPlan);
-//					System.out.println(infoPlan);
-//					infoPlan = "";
-//
-//					System.out.println("test");
-//
-//					pan.add(lab);
-//
-//			}
-//			break;
-//			default:{	JOptionPane pope = new JOptionPane("attention");
-//			pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
-//	}
+		//		switch(a){
+		//		case "Lundi":
+		//			ResultSet result = prepare.getResultSet();
+		//			while(result.next()){         
+		//				for(int i = 1; i <= 5; i++)
+		//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+		//					lab = new JLabel(infoPlan);
+		//					System.out.println(infoPlan);
+		//					infoPlan = "";
+		//
+		//					System.out.println("test");
+		//
+		//					pan.add(lab);
+		//
+		//			}
+		//			break;
+		//		case "Mardi":
+		//			ResultSet result = prepare.getResultSet();
+		//			while(result.next()){         
+		//				for(int i = 1; i <= 5; i++)
+		//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+		//					lab = new JLabel(infoPlan);
+		//					System.out.println(infoPlan);
+		//					infoPlan = "";
+		//
+		//					System.out.println("test");
+		//
+		//					pan.add(lab);
+		//
+		//			}
+		//			break;
+		//		case "Mercredi":
+		//			ResultSet result = prepare.getResultSet();
+		//			while(result.next()){         
+		//				for(int i = 1; i <= 5; i++)
+		//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+		//					lab = new JLabel(infoPlan);
+		//					System.out.println(infoPlan);
+		//					infoPlan = "";
+		//
+		//					System.out.println("test");
+		//
+		//					pan.add(lab);
+		//
+		//			}
+		//			break;
+		//		case "Jeudi":
+		//			ResultSet result = prepare.getResultSet();
+		//			while(result.next()){         
+		//				for(int i = 1; i <= 5; i++)
+		//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+		//					lab = new JLabel(infoPlan);
+		//					System.out.println(infoPlan);
+		//					infoPlan = "";
+		//
+		//					System.out.println("test");
+		//
+		//					pan.add(lab);
+		//
+		//			}
+		//			break;
+		//		case "Vendredi":
+		//			ResultSet result = prepare.getResultSet();
+		//			while(result.next()){         
+		//				for(int i = 1; i <= 5; i++)
+		//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+		//					lab = new JLabel(infoPlan);
+		//					System.out.println(infoPlan);
+		//					infoPlan = "";
+		//
+		//					System.out.println("test");
+		//
+		//					pan.add(lab);
+		//
+		//			}
+		//			break;
+		//			default:{	JOptionPane pope = new JOptionPane("attention");
+		//			pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
+		//	}
 	}
 }

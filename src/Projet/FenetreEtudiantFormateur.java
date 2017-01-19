@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import Projet.Graphique;
 	public class  FenetreEtudiantFormateur extends JFrame implements MouseListener{
-		PlanningPerso plan = new PlanningPerso();
+		
 		
 		public FenetreEtudiantFormateur(){
 			
@@ -37,14 +37,15 @@ import Projet.Graphique;
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					PlanningPerso plan = new PlanningPerso();
 					plan.checkPlan();
 				}
 			});
 			PlanningPerso.add(Planningsemaine);
 			JMenuItem PlanningMois = new JMenuItem("Planning Mois");
 			PlanningPerso.add(PlanningMois);
-			plan.setVisible(true);
-			pan1.add(plan);
+//			plan.setVisible(true);
+//			pan1.add(plan);
 			this.setContentPane(pan1);
 			this.setVisible(true);
 		}
