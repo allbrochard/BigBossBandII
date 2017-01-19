@@ -8,10 +8,10 @@ public class Main {
 
 		//PlanningAdmin planAd= new PlanningAdmin();
 
-		PlanningPerso planpers = new PlanningPerso();
+		//PlanningPerso planpers = new PlanningPerso();
 		//Graphique graph = new Graphique();
 		//Reserver res = new Reserver();
-		//Graphique graph = new Graphique();
+		Graphique graph = new Graphique();
 		//Planning plan= new Planning();
 
 		//Connexion con = new Connexion();
