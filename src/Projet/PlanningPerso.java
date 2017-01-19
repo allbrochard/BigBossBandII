@@ -80,7 +80,7 @@ public class PlanningPerso extends JFrame {
 		pan2.setBorder(null);
 		JPanel logo = new JPanel();
 		JLabel logo1 = new JLabel(new ImageIcon("C:/Users/Flo/Downloads/umbrella.jpg"));
-	
+		pan2.add(logo);
 		logo.setBackground(white);
 		logo.add(logo1);
 		pan2.add(logo);
