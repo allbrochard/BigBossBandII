@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 public class PlanningPerso extends JFrame {
 
-	String jour;
+	String jour,  infoPlan = "";
 	JPanel pan = new JPanel();
 	JPanel semaine = new JPanel();
 	JPanel pan3 = new JPanel();
@@ -28,6 +28,7 @@ public class PlanningPerso extends JFrame {
 	JPanel pan6 = new JPanel();
 	JPanel pan7 = new JPanel();
 	JPanel pan8 = new JPanel();
+	JLabel lab = new JLabel();
 	
 	public PlanningPerso(){
 
@@ -119,7 +120,8 @@ public class PlanningPerso extends JFrame {
 		vendredi.add(vendredi1);
 		semaine.add(vendredi);
 		
-	
+		checkPlan();
+		
 		pan.add(semaine, BorderLayout.NORTH);
 		pan.add(pan8,BorderLayout.CENTER);
 		pan8.add(pan3);
@@ -132,7 +134,7 @@ public class PlanningPerso extends JFrame {
 	}
 
 
-	public void ckeckPlan(){
+	public void checkPlan(){
 
 		String query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
 				+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
@@ -147,8 +149,88 @@ public class PlanningPerso extends JFrame {
 			prepare.execute();
 			
 			ResultSet result = prepare.getResultSet();
+			
 			jour = result.getObject(1).toString();
-			selectionDay(jour, prepare);
+			
+			switch(jour){
+			case "Lundi":
+				lab = new JLabel("");
+				while(result.next()){         
+					for(int i = 1; i <= 5; i++)
+						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+						lab = new JLabel(infoPlan);
+						System.out.println(infoPlan);
+						infoPlan = "";
+
+						System.out.println("test");
+
+						pan3.add(lab);
+
+				}
+				break;
+			case "Mardi":
+				lab = new JLabel("");
+				while(result.next()){         
+					for(int i = 1; i <= 5; i++)
+						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+						lab = new JLabel(infoPlan);
+						System.out.println(infoPlan);
+						infoPlan = "";
+
+						System.out.println("test");
+
+						pan4.add(lab);
+
+				}
+				break;
+			case "Mercredi":
+				lab = new JLabel("");
+				while(result.next()){         
+					for(int i = 1; i <= 5; i++)
+						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+						lab = new JLabel(infoPlan);
+						System.out.println(infoPlan);
+						infoPlan = "";
+
+						System.out.println("test");
+
+						pan5.add(lab);
+
+				}
+				break;
+			case "Jeudi":
+				lab = new JLabel("");
+				while(result.next()){         
+					for(int i = 1; i <= 5; i++)
+						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+						lab = new JLabel(infoPlan);
+						System.out.println(infoPlan);
+						infoPlan = "";
+
+						System.out.println("test");
+
+						pan6.add(lab);
+
+				}
+				break;
+			case "Vendredi":
+				lab = new JLabel("");
+				while(result.next()){         
+					for(int i = 1; i <= 5; i++)
+						infoPlan = infoPlan + result.getObject(i).toString() + " ";
+						lab = new JLabel(infoPlan);
+						System.out.println(infoPlan);
+						infoPlan = "";
+
+						System.out.println("test");
+
+						pan7.add(lab);
+
+				}
+				break;
+				default:{	JOptionPane pope = new JOptionPane("attention");
+				pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
+		}
 			
 
 		}
@@ -156,41 +238,86 @@ public class PlanningPerso extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	public void parcourirTable(PreparedStatement prepare){
-		
-		ResultSet result = prepare.getResultSet();
-		while(result.next()){         
-			for(int i = 1; i <= 5; i++)
-				infoEtude = infoEtude + result.getObject(i).toString() + " ";
-				listeEtude = new JLabel(infoEtude);
-				System.out.println(infoEtude);
-				infoEtude = "";
 
-				System.out.println("test");
-
-				resultat.add(listeEtude);
-
-		}
-	}
 	public void selectionDay(String a, PreparedStatement prepare){
-		switch(a){
-		case "Lundi":
-			parcourirTable(prepare);
-			break;
-		case "Mardi":
-			parcourirTable(prepare);
-			break;
-		case "Mercredi":
-			parcourirTable(prepare);
-			break;
-		case "Jeudi":
-			parcourirTable(prepare);
-			break;
-		case "Vendredi":
-			parcourirTable(prepare);
-			break;
-			default:{	JOptionPane pope = new JOptionPane("attention");
-			pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
-	}
+//		switch(a){
+//		case "Lundi":
+//			ResultSet result = prepare.getResultSet();
+//			while(result.next()){         
+//				for(int i = 1; i <= 5; i++)
+//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+//					lab = new JLabel(infoPlan);
+//					System.out.println(infoPlan);
+//					infoPlan = "";
+//
+//					System.out.println("test");
+//
+//					pan.add(lab);
+//
+//			}
+//			break;
+//		case "Mardi":
+//			ResultSet result = prepare.getResultSet();
+//			while(result.next()){         
+//				for(int i = 1; i <= 5; i++)
+//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+//					lab = new JLabel(infoPlan);
+//					System.out.println(infoPlan);
+//					infoPlan = "";
+//
+//					System.out.println("test");
+//
+//					pan.add(lab);
+//
+//			}
+//			break;
+//		case "Mercredi":
+//			ResultSet result = prepare.getResultSet();
+//			while(result.next()){         
+//				for(int i = 1; i <= 5; i++)
+//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+//					lab = new JLabel(infoPlan);
+//					System.out.println(infoPlan);
+//					infoPlan = "";
+//
+//					System.out.println("test");
+//
+//					pan.add(lab);
+//
+//			}
+//			break;
+//		case "Jeudi":
+//			ResultSet result = prepare.getResultSet();
+//			while(result.next()){         
+//				for(int i = 1; i <= 5; i++)
+//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+//					lab = new JLabel(infoPlan);
+//					System.out.println(infoPlan);
+//					infoPlan = "";
+//
+//					System.out.println("test");
+//
+//					pan.add(lab);
+//
+//			}
+//			break;
+//		case "Vendredi":
+//			ResultSet result = prepare.getResultSet();
+//			while(result.next()){         
+//				for(int i = 1; i <= 5; i++)
+//					infoPlan = infoPlan + result.getObject(i).toString() + " ";
+//					lab = new JLabel(infoPlan);
+//					System.out.println(infoPlan);
+//					infoPlan = "";
+//
+//					System.out.println("test");
+//
+//					pan.add(lab);
+//
+//			}
+//			break;
+//			default:{	JOptionPane pope = new JOptionPane("attention");
+//			pope.showMessageDialog(null,"ERREUR 404","",JOptionPane.ERROR_MESSAGE);}
+//	}
 	}
 }
