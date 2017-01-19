@@ -195,7 +195,7 @@ public class PlanningPerso extends JFrame {
 				jour = result.getString(1);
 				System.out.println(jour);
 			}
-			//jour = result.getString(1);
+			else jour = result.getString(1);
 			/**
 			 * permet de placer la reservation sur le bon jour dans le planning
 			 */
