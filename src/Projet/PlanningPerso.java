@@ -149,11 +149,15 @@ public class PlanningPerso extends JFrame {
 		try {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
+			//Pour les prof !!!!
 			prepare.setString(1, Graphique.loginCompte);
+			
+			//pour les ETUDIANT!!!!!
+			prepare.setString(1, Graphique.nomPromo);
 			prepare.execute();
 
 			ResultSet result = prepare.getResultSet();
-
+			System.out.println("first");
 			while(result.next()){
 			
 			if(result.first()){
@@ -165,41 +169,40 @@ public class PlanningPerso extends JFrame {
 				switch(jour){
 				case "Lundi":
 					lab = new JLabel("");
-					result.first();
-					while(result.next()){         
-						for(int i = 2; i <= 5; i++)
-							infoPlan = infoPlan + result.getObject(i).toString() + " ";
+//					result.first();
+				   
+						for(int i = 2; i <= 5; i++){
+						infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
-
+						
 						System.out.println("test");
 
 						pan3.add(lab);
-
-					}
+						}
 					break;
 				case "Mardi":
-					result.first();
+					
 					lab = new JLabel("");
-					while(result.next()){         
-						for(int i = 2; i <= 5; i++)
+					        
+						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
 
 						System.out.println("test");
-
+						
 						pan4.add(lab);
-
-					}
+						}
+					
 					break;
 				case "Mercredi":
-					result.first();
+					
 					lab = new JLabel("");
-					while(result.next()){         
-						for(int i = 2; i <= 5; i++)
+					        
+						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
@@ -212,10 +215,10 @@ public class PlanningPerso extends JFrame {
 					}
 					break;
 				case "Jeudi":
-					result.first();
+					
 					lab = new JLabel("");
-					while(result.next()){         
-						for(int i = 2; i <= 5; i++)
+					        
+						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
@@ -228,10 +231,10 @@ public class PlanningPerso extends JFrame {
 					}
 					break;
 				case "Vendredi":
-					result.first();
+					
 					lab = new JLabel("");
-					while(result.next()){         
-						for(int i = 2; i <= 5; i++)
+				         
+						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);

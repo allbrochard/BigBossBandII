@@ -28,6 +28,7 @@ public class Graphique extends JFrame{
 	JButton connecte = new JButton ("Connection");
 
 	static String typeCompte;
+	static String nomPromo;
 
 	String mdpCompte;
 	public static String loginCompte;
@@ -116,6 +117,27 @@ public class Graphique extends JFrame{
 			FenetreEtudiantFormateur  formateurFrame = new FenetreEtudiantFormateur();
 			break;
 		case "etudiant":
+			String query = "SELECT DISTINCT nompromo "
+					+ "FROM public.promo, public.etudiant, public.compte "
+					+ "WHERE etudiant.idpromofk = promo.idpromo "
+					+ "AND etudiant.idcomptefk = compte.idcompte "
+					+ "AND logcompte = ?;";
+			try {
+				PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+				prepare.setString(1, log);
+
+				prepare.execute();
+				ResultSet result = prepare.getResultSet();
+				if(result.first())
+				{
+					nomPromo = result.getString(1);
+					System.out.println(nomPromo);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
 			FenetreEtudiantFormateur  etudiantFrame = new FenetreEtudiantFormateur();
 			break;
 		default : System.out.println("perdu");
