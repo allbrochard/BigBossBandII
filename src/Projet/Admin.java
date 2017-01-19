@@ -248,7 +248,6 @@ public class Admin extends JFrame implements MouseListener{
 		setContentPane(suppCompte);
 		Scanner sc = new Scanner(System.in);
 
-
 		JLabel login = new JLabel("LOGIN");
 
 		JTextField txuser = new JTextField(15);
