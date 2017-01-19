@@ -22,14 +22,14 @@ public class Main {
 		//prom.integrerEtudiant();
 		
 		//FenetreEtudiantFormateur JFrame = new FenetreEtudiantFormateur();	
-	//	FenetreAdmin JFrame = new FenetreAdmin();
+		//FenetreAdmin JFrame = new FenetreAdmin();
 
 		//FenetreResponsable respon = new FenetreResponsable();
 		//adm.modifCompte();
 		//adm.creeCompte();
 		//res.reserverSalle();
 		
-//		res.modifResa();
+		//res.modifResa();
 
 	
 	

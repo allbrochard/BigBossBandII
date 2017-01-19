@@ -32,20 +32,19 @@ import Projet.Graphique;
 			Planning.add(PlanningGeneral);
 			JMenu PlanningPerso = new JMenu(" Planning Personnelle ");
 			Planning.add(PlanningPerso);
-//			JMenuItem Planningsemaine = new JMenuItem(" Planning semaine");
-//			Planningsemaine.addActionListener(new ActionListener() {
-//				
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//				plan.ckeckPlan();
-//					
-//				}
-//			});
-//			PlanningPerso.add(Planningsemaine);
+			JMenuItem Planningsemaine = new JMenuItem(" Planning semaine");
+			Planningsemaine.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					plan.checkPlan();
+				}
+			});
+			PlanningPerso.add(Planningsemaine);
 			JMenuItem PlanningMois = new JMenuItem("Planning Mois");
 			PlanningPerso.add(PlanningMois);
-			
-			this.setContentPane(pan1);
+			plan.setVisible(true);
+			this.setContentPane(plan);
 			this.setVisible(true);
 		}
 
