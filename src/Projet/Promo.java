@@ -79,6 +79,8 @@ public class Promo extends JFrame{
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
+				tNumCompte.setText("");
+				tNumPromo.setText("");
 			}
 		});
 
@@ -113,7 +115,7 @@ public class Promo extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 
 				
-				resultat.setBackground(Color.red);
+				
 				resultat.setLayout(new BoxLayout(resultat,BoxLayout.PAGE_AXIS));
 				resultat.setSize(new Dimension(200, 500));
 			
@@ -189,7 +191,7 @@ public class Promo extends JFrame{
 				resultat.setVisible(true);
 				
 				
-
+				tPromo.setText("");
 			}
 			
 		});
