@@ -132,7 +132,7 @@ public class PlanningPerso extends JFrame {
 	}
 
 
-	public void ckeckPlan(){
+	public void checkPlan(){
 
 		String query = "SELECT DISTINCT dateresa, nomcompte, nommatiere, nompromo, idsallefk "
 				+ "FROM public.reservation, public.compte, public.matiere, public.promo, public.salles "
