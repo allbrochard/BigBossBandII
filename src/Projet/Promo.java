@@ -1,6 +1,7 @@
 package Projet;
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -87,9 +88,11 @@ public class Promo extends JFrame{
 
 	public void afficheListeEtud(){
 		//***********NOMBRE ETUDIANT************	
+		
 		JPanel panRes = new JPanel();
+		JPanel resultat = new JPanel();
 		
-		
+				
 		
 		setLocationRelativeTo(null);
 		setSize(new Dimension(200, 300));
@@ -98,21 +101,19 @@ public class Promo extends JFrame{
 		JLabel promo = new JLabel("Rentrez le nom de la promo : ");
 		JTextField tPromo = new JTextField(15);
 		JButton valider = new JButton("valider");
-
+		
 		panRes.add(promo);
 		panRes.add(tPromo);
 		panRes.add(valider);
+		
 
 		valider.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-
-				
-				JPanel resultat = new JPanel();
-				resultat.setLayout(new BoxLayout(resultat,BoxLayout.PAGE_AXIS));
-				resultat.setSize(new Dimension(200, 500));
-				
+			resultat.setLayout(new BoxLayout(resultat, BoxLayout.PAGE_AXIS));
+			resultat.setSize(200, 500);
+			
 				text = tPromo.getText();
 				String query = "SELECT COUNT(*) AS nbetudiant "
 						+ "FROM public.etudiant, public.promo "
@@ -133,7 +134,7 @@ public class Promo extends JFrame{
 						nbEtude2 = new JLabel("" + nbEtud + " etudiant(s) dans la promo");
 					}
 					result.close();
-					panRes.add(nbEtude2);
+					resultat.add(nbEtude2);
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
@@ -158,33 +159,36 @@ public class Promo extends JFrame{
 					ResultSet result = prepare.getResultSet();
 
 					//on cherche avec cette boucle a afficher le nom et prenom des personne de la promo
-					result.beforeFirst();
 
 					resultat.add(new JLabel("Nom  " + "Prenom  " + "Login  "));
 					resultat.add(new JLabel(" "));
+					
 
 						while(result.next()){         
 							for(int i = 1; i <= 3; i++)
 								infoEtude = infoEtude + result.getObject(i).toString() + " ";
 								listeEtude = new JLabel(infoEtude);
+								System.out.println(infoEtude);
 								infoEtude = "";
+								System.out.println("test");
 								resultat.add(listeEtude);
 						}
-							resultat.add(listeEtude);
-
+						
 							result.close();
 
 				}
 				catch (SQLException d) {
 					d.printStackTrace();
 				}
-				panRes.add(resultat);
+				
+				resultat.validate();
 				resultat.setVisible(true);
-
+				
 			}
 			
 		});
-		
+
+		panRes.add(resultat);
 		panRes.setVisible(true);
 		setVisible(true);
 
