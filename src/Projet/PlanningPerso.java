@@ -152,12 +152,16 @@ public class PlanningPerso extends JFrame {
 			PreparedStatement prepare = Connexion.getInstance().prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
 
+			//Pour les prof !!!!
 			prepare.setString(1, Graphique.loginCompte);
+			
+			//pour les ETUDIANT!!!!!
+			prepare.setString(1, Graphique.nomPromo);
 			prepare.execute();
 
 			ResultSet result = prepare.getResultSet();
 			System.out.println("first");
-			result.beforeFirst();
+
 			while(result.next()){
 			System.out.println("bonjour");
 			if(result.first()){
@@ -168,19 +172,21 @@ public class PlanningPerso extends JFrame {
 			
 				switch(jour){
 				case "Lundi":
+
 					lab = new JLabel("");  
 						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
 						System.out.println(infoPlan);
 						infoPlan = "";
-
+						
 						System.out.println("test");
 
 						pan3.add(lab);
 
 						}
 					break;
+
 				case "Mardi":
 					lab = new JLabel("");      
 						for(int i = 2; i <= 5; i++){
@@ -190,11 +196,12 @@ public class PlanningPerso extends JFrame {
 						infoPlan = "";
 
 						System.out.println("test");
-
+						
 						pan4.add(lab);
-
-					}
+						}
+					
 					break;
+
 				case "Mercredi":
 					lab = new JLabel("");        
 						for(int i = 2; i <= 5; i++){
@@ -209,8 +216,10 @@ public class PlanningPerso extends JFrame {
 
 					}
 					break;
+
 				case "Jeudi":
 					lab = new JLabel("");       
+
 						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
@@ -223,8 +232,10 @@ public class PlanningPerso extends JFrame {
 
 					}
 					break;
+
 				case "Vendredi":
 					lab = new JLabel("");       
+
 						for(int i = 2; i <= 5; i++){
 							infoPlan = infoPlan + result.getObject(i).toString() + " ";
 						lab = new JLabel(infoPlan);
