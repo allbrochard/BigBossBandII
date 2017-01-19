@@ -51,11 +51,11 @@ public class PlanningPerso extends JFrame {
 		Color vert = new Color(0,150,20);
 
 		semaine.setLayout(new BoxLayout(semaine,BoxLayout.LINE_AXIS));
-		lundi.setLayout(new BoxLayout(pan3,BoxLayout.PAGE_AXIS));
-		mardi.setLayout(new BoxLayout(pan4,BoxLayout.PAGE_AXIS));
-		mercredi.setLayout(new BoxLayout(pan5,BoxLayout.PAGE_AXIS));
-		jeudi.setLayout(new BoxLayout(pan6,BoxLayout.PAGE_AXIS));
-		vendredi.setLayout(new BoxLayout(pan7,BoxLayout.PAGE_AXIS));
+		lundi.setLayout(new BoxLayout(lundi,BoxLayout.PAGE_AXIS));
+		mardi.setLayout(new BoxLayout(mardi,BoxLayout.PAGE_AXIS));
+		mercredi.setLayout(new BoxLayout(mercredi,BoxLayout.PAGE_AXIS));
+		jeudi.setLayout(new BoxLayout(jeudi,BoxLayout.PAGE_AXIS));
+		vendredi.setLayout(new BoxLayout(vendredi,BoxLayout.PAGE_AXIS));
 		pan8.setLayout(new BoxLayout(pan8,BoxLayout.LINE_AXIS));
 
 		semaine.setSize(new Dimension(800,100));
