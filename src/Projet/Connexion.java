@@ -40,6 +40,7 @@ public class Connexion{
 
 
 
+
 		try {
 
 			connect = DriverManager.getConnection(url, user, passwd);
