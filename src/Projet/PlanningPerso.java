@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 
 public class PlanningPerso extends JFrame {
 
-	String jour;
+	String jour, infoPlan = "";
 	JPanel pan = new JPanel();
 	JPanel semaine = new JPanel();
 	JPanel pan3 = new JPanel();
@@ -159,19 +159,19 @@ public class PlanningPerso extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	public void parcourirTable(PreparedStatement prepare){
+	public void parcourirTable(PreparedStatement prepare, JLabel lab, JPanel pan){
 		
 		ResultSet result = prepare.getResultSet();
 		while(result.next()){         
 			for(int i = 1; i <= 5; i++)
-				infoEtude = infoEtude + result.getObject(i).toString() + " ";
-				listeEtude = new JLabel(infoEtude);
-				System.out.println(infoEtude);
-				infoEtude = "";
+				infoPlan = infoPlan + result.getObject(i).toString() + " ";
+				lab = new JLabel(infoPlan);
+				System.out.println(infoPlan);
+				infoPlan = "";
 
 				System.out.println("test");
 
-				resultat.add(listeEtude);
+				pan.add(lab);
 
 		}
 	}
