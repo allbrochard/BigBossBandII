@@ -31,6 +31,11 @@ public class PlanningPerso extends JFrame {
 	JPanel pan7 = new JPanel();
 	JPanel pan8 = new JPanel();
 	JLabel lab = new JLabel();
+	JPanel lundi;
+	JPanel mardi;
+	JPanel mercredi;
+	JPanel jeudi;
+	JPanel vendredi;
 
 	public PlanningPerso(){
 
@@ -89,13 +94,13 @@ public class PlanningPerso extends JFrame {
 		logo.add(logo1);
 		semaine.add(logo);
 
-		JPanel lundi = new JPanel();
+		lundi = new JPanel();
 		JLabel lundi1 = new JLabel("Lundi");
 		lundi.add(lundi1);
 		semaine.add(lundi);
 
 
-		JPanel mardi = new JPanel();
+		mardi = new JPanel();
 		JLabel mardi1= new JLabel("Mardi");
 		mardi.setBackground(white);
 		mardi.add(mardi1);
@@ -103,21 +108,21 @@ public class PlanningPerso extends JFrame {
 
 
 
-		JPanel mercredi = new JPanel();
+		mercredi = new JPanel();
 		JLabel mercredi1= new JLabel("Mercredi");
 		mercredi.setBackground(white);
 		mercredi.add(mercredi1);
 		semaine.add(mercredi);
 
 
-		JPanel jeudi = new JPanel();
+		jeudi = new JPanel();
 		JLabel jeudi1= new JLabel("Jeudi");
 		jeudi.setBackground(white);
 		jeudi.add(jeudi1);
 		semaine.add(jeudi);
 
 
-		JPanel vendredi = new JPanel();
+		vendredi = new JPanel();
 		JLabel vendredi1= new JLabel("Vendredi");
 		vendredi.setBackground(white);
 		vendredi.add(vendredi1);
@@ -205,7 +210,7 @@ public class PlanningPerso extends JFrame {
 						
 						System.out.println("test");
 
-						pan3.add(lab);
+						lundi.add(lab);
 
 						}
 					break;
@@ -220,7 +225,7 @@ public class PlanningPerso extends JFrame {
 
 						System.out.println("test");
 						
-						pan4.add(lab);
+						mardi.add(lab);
 						}
 					
 					break;
@@ -235,7 +240,7 @@ public class PlanningPerso extends JFrame {
 
 						System.out.println("test");
 
-						pan5.add(lab);
+						mercredi.add(lab);
 
 					}
 					break;
@@ -251,7 +256,7 @@ public class PlanningPerso extends JFrame {
 
 						System.out.println("test");
 
-						pan6.add(lab);
+						jeudi.add(lab);
 
 					}
 					break;
@@ -267,7 +272,7 @@ public class PlanningPerso extends JFrame {
 
 						System.out.println("test");
 
-						pan7.add(lab);
+						vendredi.add(lab);
 
 					}
 					break;
